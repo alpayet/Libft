@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 19:37:35 by alpayet           #+#    #+#             */
-/*   Updated: 2024/11/11 17:00:31 by alpayet          ###   ########.fr       */
+/*   Updated: 2024/11/22 01:28:06 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,9 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	unsigned long	i;
-	unsigned long	j;
+	size_t	i;
 
 	i = 0;
-	j = 0;
-	while (src[j])
-		j++;
 	while ((size != 0) && (i < (size - 1)) && (src[i] != '\0'))
 	{
 		dst[i] = src[i];
@@ -28,7 +24,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	}
 	if (size != 0)
 		dst[i] = '\0';
-	return (j);
+	return (ft_strlen(src));
 }
 
 /*#include <string.h>

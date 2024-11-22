@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:32:47 by alpayet           #+#    #+#             */
-/*   Updated: 2024/11/13 00:22:01 by alpayet          ###   ########.fr       */
+/*   Updated: 2024/11/22 02:07:22 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memset(void *dest, int value, size_t n)
 	unsigned char	*dest_char;
 
 	value = (unsigned char)value;
-	dest_char = (unsigned char *)dest;
+	dest_char = dest;
 	i = 0;
 	while (i < n)
 	{
@@ -35,7 +35,7 @@ int	main(void)
 	int	i;
 
 	i = 0;
-	memset(dest, 'A', 9);
+	ft_memset(dest, 'A', 9);
 	while (i != 6)
 	{
 		printf("%d \n", dest[i]);

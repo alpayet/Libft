@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 21:23:59 by alpayet           #+#    #+#             */
-/*   Updated: 2024/11/11 16:37:51 by alpayet          ###   ########.fr       */
+/*   Updated: 2024/11/22 02:53:48 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	unsigned long	i;
-	unsigned long	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;

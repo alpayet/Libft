@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 15:57:46 by alpayet           #+#    #+#             */
-/*   Updated: 2024/11/13 23:22:12 by alpayet          ###   ########.fr       */
+/*   Updated: 2024/11/22 02:22:20 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	unsigned char		*dest_char;
 	const unsigned char	*src_char;
 
-	dest_char = (unsigned char *)dest;
-	src_char = (const unsigned char *)src;
+	dest_char = dest;
+	src_char = src;
 	i = 0;
 	while (i < n)
 	{
@@ -33,7 +33,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 int	main(void)
 {
 	char	dest[] = "abcdefg";
-	int	src[]= {,12,3,4};
+	int	src[]= {1,12,3,4};
 	printf("%s\n", dest);
 	ft_memcpy(dest, src, 16);
 	printf("%d", dest[0]);

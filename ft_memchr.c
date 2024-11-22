@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:57:56 by alpayet           #+#    #+#             */
-/*   Updated: 2024/11/10 14:43:45 by alpayet          ###   ########.fr       */
+/*   Updated: 2024/11/22 02:18:24 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	const unsigned char	*s_char;
-	unsigned long		i;
+	size_t		i;
 
 	c = (unsigned char)c;
 	s_char = s;
@@ -26,7 +26,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 			return ((void *)(s + i));
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
 
 /*#include <string.h>

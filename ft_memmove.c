@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 17:37:27 by alpayet           #+#    #+#             */
-/*   Updated: 2024/11/13 00:23:03 by alpayet          ###   ########.fr       */
+/*   Updated: 2024/11/22 01:45:37 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	char			*dest_char;
 	const char		*src_char;
 
-	dest_char = (char *)dest;
-	src_char = (char *)src;
+	dest_char = dest;
+	src_char = src;
 	i = 0;
 	if (dest <= src)
 		ft_memcpy(dest, src, n);

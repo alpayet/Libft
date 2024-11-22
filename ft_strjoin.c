@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:49:43 by alpayet           #+#    #+#             */
-/*   Updated: 2024/11/09 16:33:18 by alpayet          ###   ########.fr       */
+/*   Updated: 2024/11/22 01:05:42 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,15 @@
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char			*s1_s2_conc;
-	unsigned long	i;
-	unsigned long	j;
+	size_t		size_s1_s2_conc;
 
-	s1_s2_conc = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
+	size_s1_s2_conc = ft_strlen(s1) + ft_strlen(s2) + 1;
+	s1_s2_conc = malloc(sizeof(char) * size_s1_s2_conc);
 	if (s1_s2_conc == NULL)
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (s1[i])
-	{
-		s1_s2_conc[i] = s1[i];
-		i++;
-	}
-	while (s2[j])
-	{
-		s1_s2_conc[i + j] = s2[j];
-		j++;
-	}
-	s1_s2_conc[i + j] = '\0';
+	s1_s2_conc[0] = '\0';
+	ft_strlcat(s1_s2_conc, s1, size_s1_s2_conc);
+	ft_strlcat(s1_s2_conc, s2, size_s1_s2_conc);
 	return (s1_s2_conc);
 }
 

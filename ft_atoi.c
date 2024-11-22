@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 22:18:02 by alpayet           #+#    #+#             */
-/*   Updated: 2024/11/07 22:52:46 by alpayet          ###   ########.fr       */
+/*   Updated: 2024/11/21 23:41:00 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int	ft_atoi(const char *nptr)
 }
 
 /*#include <stdlib.h>
+
 int	main(void)
 {
-	printf("%d", ft_atoi("	-5q	"));
+	printf("%d", ft_atoi("2147483648"));
 }*/
