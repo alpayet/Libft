@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:53:27 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/08 17:18:48 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/11 13:47:32 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,13 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
 # include <stdint.h>
 # include <stdarg.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 # endif
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
 
 //CHECKS
 
@@ -44,17 +39,48 @@ char		*ft_itoa(int n);
 
 //DATA_STRUCTURES
 
+//  CHAINED_LIST
+
+typedef struct s_list t_list;
 t_list		*ft_lstnew(void *content);
+size_t		ft_lstsize(t_list *lst);
+void		*ft_lstget(t_list *node);
+void		ft_lstset(t_list *node, void *content);
+t_list		*ft_lstnext(t_list *node);
+t_list		*ft_lst_at(t_list *lst, size_t index);
 t_list		*ft_lstlast(t_list *lst);
-t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 void		ft_lstadd_front(t_list **lst, t_list *new);
 void		ft_lstadd_back(t_list **lst, t_list *new);
-void		ft_lstdelone(t_list *lst, void (*del)(void*));
+void		ft_lstdelone(t_list *node, void (*del)(void*));
 void		ft_lstclear(t_list **lst, void (*del)(void*));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
-int			ft_lstsize(t_list *lst);
-void		ft_lst_remove_if(t_list **lst, void *data_ref, int (*cmp)(), void (*del)(void*));
+t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+void		ft_lst_remove_if(t_list **lst, void *data_ref, bool (*cmp)(void*, void*), void (*del)(void*));
+
+//  VECTOR
+
+typedef struct s_vector vector;
+vector		*vector_create(size_t capacity, size_t element_size);
+size_t		vector_size(vector *vect);
+void		*vector_get(vector *vect, size_t index);
+void		vector_set(vector *vect, size_t index, void *element);
+bool		vector_resize(vector *vect, size_t new_size);
+bool		vector_push(vector *vect, void *element);
+void		vector_delete(vector *vect);
+
+//  STACK
+
+typedef struct s_stack stack;
+stack		*stack_create(size_t capacity, size_t element_size);
+bool		stack_is_empty(stack *stk);
+bool		stack_push(stack *stk, void *element);
+void		*stack_pop(stack *stk);
+void		*stack_top(stack *stk);
+void		stack_delete(stack *stk);
+
+//  QUEUE
+
+
 
 //FILES_MANAGING
 

@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 03:33:24 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/05 16:15:58 by alpayet          ###   ########.fr       */
+/*   Created: 2025/06/08 18:06:58 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/11 12:41:37 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef STRUCTURES
+# define STRUCTURES
+# include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+typedef struct s_list
 {
-	t_list	*next_alt;
+	void	*content;
+	t_list	*next;
+}	t_list;
 
-	if (*lst == NULL)
-		return ;
-	while (*lst != NULL)
-	{
-		next_alt = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = next_alt;
-	}
-}
+typedef struct s_vector
+{
+	size_t capacity;
+	size_t size; //number of elements occupied in the array, 0 <= size <= capacity
+	void *data; //array of "capacity" elements
+	size_t element_size;  //size of an array element
+}	vector;
+
+typedef struct s_stack
+{
+	vector *vect;
+}	stack;
+
+#endif

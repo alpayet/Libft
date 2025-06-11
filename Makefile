@@ -2,16 +2,33 @@
 
 #files
 SRC_FILES = \
-	data_structures/chained_lists/ft_lstsize.c \
-	data_structures/chained_lists/ft_lstnew.c \
-	data_structures/chained_lists/ft_lstmap.c \
-	data_structures/chained_lists/ft_lstlast.c \
-	data_structures/chained_lists/ft_lstiter.c \
-	data_structures/chained_lists/ft_lstdelone.c \
-	data_structures/chained_lists/ft_lstclear.c \
-	data_structures/chained_lists/ft_lstadd_front.c \
-	data_structures/chained_lists/ft_lstadd_back.c \
-	data_structures/chained_lists/ft_lst_remove_if.c \
+	data_structures/chained_list/ft_lstsize.c \
+	data_structures/chained_list/ft_lstget.c \
+	data_structures/chained_list/ft_lstset.c \
+	data_structures/chained_list/ft_lstnext.c \
+	data_structures/chained_list/ft_lst_at.c \
+	data_structures/chained_list/ft_lstnew.c \
+	data_structures/chained_list/ft_lstmap.c \
+	data_structures/chained_list/ft_lstlast.c \
+	data_structures/chained_list/ft_lstiter.c \
+	data_structures/chained_list/ft_lstdelone.c \
+	data_structures/chained_list/ft_lstclear.c \
+	data_structures/chained_list/ft_lstadd_front.c \
+	data_structures/chained_list/ft_lstadd_back.c \
+	data_structures/chained_list/ft_lst_remove_if.c \
+	data_structures/stack/stack_create.c \
+	data_structures/stack/stack_delete.c \
+	data_structures/stack/stack_is_empty.c \
+	data_structures/stack/stack_pop.c \
+	data_structures/stack/stack_push.c \
+	data_structures/stack/stack_top.c \
+	data_structures/vector/vector_create.c \
+	data_structures/vector/vector_delete.c \
+	data_structures/vector/vector_get.c \
+	data_structures/vector/vector_push.c \
+	data_structures/vector/vector_resize.c \
+	data_structures/vector/vector_set.c \
+	data_structures/vector/vector_size.c \
 	checks/ft_isalpha.c \
 	checks/ft_isdigit.c \
 	checks/ft_isalnum.c \
@@ -70,7 +87,6 @@ NAME = libft.a
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-MAKE = make --no-print-directory -j
 
 all : $(NAME)
 

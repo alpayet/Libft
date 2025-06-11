@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   stack_delete.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 23:28:01 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/05 16:16:03 by alpayet          ###   ########.fr       */
+/*   Created: 2025/06/11 13:29:00 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/11 13:30:51 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "structures.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void stack_delete(stack *stk)
 {
-	if (new == NULL)
+	if (stk == NULL)
 		return ;
-	new->next = *lst;
-	*lst = new;
+	vector_delete(stk->vect);
+	free(stk);
 }

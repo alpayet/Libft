@@ -6,11 +6,11 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 22:26:30 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/05 16:15:46 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/10 13:50:41 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "structures.h"
 
 t_list *ft_lstnew(void *content)
 {

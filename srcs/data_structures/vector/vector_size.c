@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   vector_size.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 01:10:24 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/05 16:15:51 by alpayet          ###   ########.fr       */
+/*   Created: 2025/06/11 11:51:05 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/11 11:52:54 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "structures.h"
 
-t_list	*ft_lstlast(t_list *lst)
+size_t vector_size(vector *vect)
 {
-	if (lst == NULL)
-		return (NULL);
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
+	return (vect->size);
 }

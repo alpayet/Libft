@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   stack_push.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 02:12:50 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/05 16:16:06 by alpayet          ###   ########.fr       */
+/*   Created: 2025/06/10 21:29:57 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/11 13:26:12 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "structures.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+bool stack_push(stack *stk, void *element)
 {
-	if (new == NULL)
-		return ;
-	if (*lst == NULL)
-	{
-		*lst = new;
-		//new->next = NULL;
-		return ;
-	}
-	ft_lstlast(*lst)->next = new;
-	//new->next = NULL;
+	return (vector_push(stk->vect, element));
 }

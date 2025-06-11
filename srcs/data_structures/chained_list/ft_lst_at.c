@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_lst_at.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 03:02:45 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/05 16:15:56 by alpayet          ###   ########.fr       */
+/*   Created: 2025/06/11 12:43:51 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/11 13:02:31 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "structures.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+t_list *ft_lst_at(t_list *lst, size_t index)
 {
-	if (lst == NULL || del == NULL)
-		return ;
-	del(lst->content);
-	free(lst);
+	while (index != 0 && lst != NULL)
+	{
+		index--;
+		lst = lst->next;
+	}
+	return (lst);
 }
