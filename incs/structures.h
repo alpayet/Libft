@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 18:06:58 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/11 12:41:37 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/17 23:48:57 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,25 @@ typedef struct s_stack
 {
 	vector *vect;
 }	stack;
+
+typedef struct s_queue
+{
+	size_t capacity;
+	size_t size;
+	size_t front;
+	void *data;
+	size_t element_size;
+} queue;
+
+typedef struct s_entry
+{
+	char *key;
+	void *value;
+} entry;
+
+typedef struct s_hashtbl
+{
+	vector *vect;
+}	t_hashtbl;
 
 #endif

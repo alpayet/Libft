@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_top.c                                        :+:      :+:    :+:   */
+/*   hashtbl_remove.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/10 22:26:14 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/16 00:26:30 by alpayet          ###   ########.fr       */
+/*   Created: 2025/06/18 04:09:08 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/18 04:39:45 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void *stack_top(stack *stk)
+void	hashtbl_remove(hashtbl *h, char *key)
 {
-	if (stk == NULL || stk->vect == NULL || stk->vect->size == 0)
-		return (NULL);
-	return (vector_get(stk->vect, stk->vect->size - 1));
+
 }

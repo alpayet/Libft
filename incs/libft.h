@@ -6,13 +6,14 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:53:27 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/11 13:47:32 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/17 22:57:07 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stdlib.h>
+# include <limits.h>
 # include <unistd.h>
 # include <stdbool.h>
 # include <stdint.h>
@@ -62,9 +63,9 @@ void		ft_lst_remove_if(t_list **lst, void *data_ref, bool (*cmp)(void*, void*), 
 typedef struct s_vector vector;
 vector		*vector_create(size_t capacity, size_t element_size);
 size_t		vector_size(vector *vect);
+bool		vector_resize(vector *vect, size_t new_size);
 void		*vector_get(vector *vect, size_t index);
 void		vector_set(vector *vect, size_t index, void *element);
-bool		vector_resize(vector *vect, size_t new_size);
 bool		vector_push(vector *vect, void *element);
 void		vector_delete(vector *vect);
 
@@ -74,11 +75,30 @@ typedef struct s_stack stack;
 stack		*stack_create(size_t capacity, size_t element_size);
 bool		stack_is_empty(stack *stk);
 bool		stack_push(stack *stk, void *element);
-void		*stack_pop(stack *stk);
 void		*stack_top(stack *stk);
+void		*stack_pop(stack *stk);
 void		stack_delete(stack *stk);
 
 //  QUEUE
+
+typedef struct s_queue queue;
+queue		*queue_create(size_t capacity, size_t element_size);
+size_t		queue_size(queue *q);
+bool		queue_is_empty(queue *q);
+bool		queue_enqueue(queue *q, void *element);
+void 		*queue_peek(queue *q);
+void		*queue_dequeue(queue *q);
+void		queue_delete(queue *q);
+
+// HASH TABLE
+
+typedef struct s_hashtbl hashtbl;
+hashtbl		*hashtbl_create(size_t capacity);
+void		hashtbl_put(hashtbl *h, char *key, void *value);
+bool		hashtbl_contains(hashtbl *h, char *key);
+void		*hashtbl_get(hashtbl *h, char *key);
+void		hashtbl_remove(hashtbl *h, char *key);
+void		hashtbl_delete(hashtbl *h);
 
 
 

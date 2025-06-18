@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 21:29:57 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/11 13:26:12 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/16 00:25:34 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 bool stack_push(stack *stk, void *element)
 {
-	return (vector_push(stk->vect, element));
+	return (stk != NULL && vector_push(stk->vect, element));
 }

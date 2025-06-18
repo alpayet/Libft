@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 11:51:05 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/11 11:52:54 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/15 23:54:47 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 size_t vector_size(vector *vect)
 {
+	if (vect == NULL)
+		return (0);
 	return (vect->size);
 }

@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 13:38:04 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/11 13:46:39 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/16 00:23:51 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 bool stack_is_empty(stack *stk)
 {
-	return (stk->vect->size == 0);
+	return (stk == NULL || stk->vect == NULL || stk->vect->size == 0);
 }

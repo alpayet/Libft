@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_top.c                                        :+:      :+:    :+:   */
+/*   queue_peek.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/10 22:26:14 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/16 00:26:30 by alpayet          ###   ########.fr       */
+/*   Created: 2025/06/15 23:47:23 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/16 00:34:24 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void *stack_top(stack *stk)
+void *queue_peek(queue *q)
 {
-	if (stk == NULL || stk->vect == NULL || stk->vect->size == 0)
+	if (q == NULL || q->data == NULL || q->size == 0)
 		return (NULL);
-	return (vector_get(stk->vect, stk->vect->size - 1));
+	return ((char *)q->data + q->front * q->element_size);
 }

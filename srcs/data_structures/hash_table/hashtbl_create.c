@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_top.c                                        :+:      :+:    :+:   */
+/*   hashtbl_create.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/10 22:26:14 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/16 00:26:30 by alpayet          ###   ########.fr       */
+/*   Created: 2025/06/17 22:24:16 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/17 23:24:21 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void *stack_top(stack *stk)
+hashtbl *hashtbl_create(size_t capacity)
 {
-	if (stk == NULL || stk->vect == NULL || stk->vect->size == 0)
+	hashtbl	*h;
+
+	h = malloc(sizeof(hashtbl));
+	if (h == NULL)
 		return (NULL);
-	return (vector_get(stk->vect, stk->vect->size - 1));
+	h->vect = vector_create(capacity, sizeof(void *));
+	if (h->vect == NULL)
+	{
+		free(h);
+		return (NULL);
+	}
+	return (h);
 }

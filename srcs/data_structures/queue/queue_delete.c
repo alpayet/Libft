@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_top.c                                        :+:      :+:    :+:   */
+/*   queue_delete.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/10 22:26:14 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/16 00:26:30 by alpayet          ###   ########.fr       */
+/*   Created: 2025/06/17 21:50:13 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/17 21:51:23 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void *stack_top(stack *stk)
+void queue_delete(queue *q)
 {
-	if (stk == NULL || stk->vect == NULL || stk->vect->size == 0)
-		return (NULL);
-	return (vector_get(stk->vect, stk->vect->size - 1));
+	if (q == NULL)
+		return ;
+	free(q->data);
+	free(q);
 }
