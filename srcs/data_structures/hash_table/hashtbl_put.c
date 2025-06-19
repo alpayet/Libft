@@ -6,11 +6,13 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 22:30:49 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/18 04:00:22 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/19 06:09:03 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
+t_list *hashtbl_bucket(hashtbl *h, char *key);
+void	hashtbl_change_bucket_head(hashtbl *h, t_list *new_bucket_head, char *key);
 entry *hashtbl_find_entry(t_list *bucket, char *key);
 
 static entry *new_entry(char *key, void *value)
@@ -29,7 +31,6 @@ static bool hashtbl_bucket_prepend(t_list **bucket, char *key, void *value)
 {
 	t_list	*new_node;
 	entry	*entry;
-	size_t	index_in_table;
 
 	entry = new_entry(key, value);
 	if (entry == NULL)
@@ -45,17 +46,17 @@ bool hashtbl_put(hashtbl *h, char *key, void *value)
 {
 	t_list	*bucket;
 	entry	*entry;
-	size_t	index_in_table;
 
-	if (h == NULL || h->vect == NULL || h->vect->size == 0)
+	if (h == NULL || key == NULL || h->vect == NULL)
 		return (false);
-	index_in_table = hash(key) % h->vect->size;
-	bucket = vector_get(h->vect, index_in_table);
+	hashtbl_resize(h);
+	bucket = hashtbl_bucket(h, key);
 	if (bucket == NULL)
 	{
 		if (hashtbl_bucket_prepend(&bucket, key, value) == false)
 			return (false);
-		vector_set(h->vect, index_in_table, bucket);
+		hashtbl_change_bucket_head(h, bucket, key);
+		h->count++;
 		return (true);
 	}
 	entry = hashtbl_find_entry(bucket, key);
@@ -63,8 +64,10 @@ bool hashtbl_put(hashtbl *h, char *key, void *value)
 	{
 		if (hashtbl_bucket_prepend(&bucket, key, value) == false)
 			return (false);
-		vector_set(h->vect, index_in_table, bucket);
+		hashtbl_change_bucket_head(h, bucket, key);
+		h->count++;
 	}
 	else
 		entry->value = value;
+	return (true);
 }

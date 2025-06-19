@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 23:21:13 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/18 01:53:40 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/19 06:02:05 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void *hashtbl_get(hashtbl *h, char *key)
 	t_list	*bucket;
 	entry	*node_entry;
 
+	if (h == NULL || key == NULL)
+		return (NULL);
 	bucket = hashtbl_bucket(h, key);
 	if (bucket == NULL)
 		return (NULL);

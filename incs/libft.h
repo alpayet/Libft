@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:53:27 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/17 22:57:07 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/19 05:54:08 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char		*ft_itoa(int n);
 
 //DATA_STRUCTURES
 
-//  CHAINED_LIST
+//   CHAINED_LIST
 
 typedef struct s_list t_list;
 t_list		*ft_lstnew(void *content);
@@ -53,12 +53,13 @@ t_list		*ft_lstlast(t_list *lst);
 void		ft_lstadd_front(t_list **lst, t_list *new);
 void		ft_lstadd_back(t_list **lst, t_list *new);
 void		ft_lstdelone(t_list *node, void (*del)(void*));
+void		ft_lstremove_next(t_list **lst, t_list *prev, void (*del)(void*));
+void		ft_lstremove_if(t_list **lst, void *data_ref, bool (*cmp)(void*, void*), void (*del)(void*));
 void		ft_lstclear(t_list **lst, void (*del)(void*));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-void		ft_lst_remove_if(t_list **lst, void *data_ref, bool (*cmp)(void*, void*), void (*del)(void*));
 
-//  VECTOR
+//   VECTOR
 
 typedef struct s_vector vector;
 vector		*vector_create(size_t capacity, size_t element_size);
@@ -67,9 +68,9 @@ bool		vector_resize(vector *vect, size_t new_size);
 void		*vector_get(vector *vect, size_t index);
 void		vector_set(vector *vect, size_t index, void *element);
 bool		vector_push(vector *vect, void *element);
-void		vector_delete(vector *vect);
+void		vector_delete(vector *vect, void (*del)(void *));
 
-//  STACK
+//   STACK
 
 typedef struct s_stack stack;
 stack		*stack_create(size_t capacity, size_t element_size);
@@ -77,9 +78,9 @@ bool		stack_is_empty(stack *stk);
 bool		stack_push(stack *stk, void *element);
 void		*stack_top(stack *stk);
 void		*stack_pop(stack *stk);
-void		stack_delete(stack *stk);
+void		stack_delete(stack *stk, void (*del)(void *));
 
-//  QUEUE
+//   QUEUE
 
 typedef struct s_queue queue;
 queue		*queue_create(size_t capacity, size_t element_size);
@@ -88,18 +89,18 @@ bool		queue_is_empty(queue *q);
 bool		queue_enqueue(queue *q, void *element);
 void 		*queue_peek(queue *q);
 void		*queue_dequeue(queue *q);
-void		queue_delete(queue *q);
+void		queue_delete(queue *q, void (*del)(void *));
 
-// HASH TABLE
-
+//   HASH TABLE
 typedef struct s_hashtbl hashtbl;
+#define INITIAL_BUCKET_COUNT 16
+#define HASHTBL_LOAD_FACTOR_LIMIT 0.75f
 hashtbl		*hashtbl_create(size_t capacity);
 void		hashtbl_put(hashtbl *h, char *key, void *value);
 bool		hashtbl_contains(hashtbl *h, char *key);
 void		*hashtbl_get(hashtbl *h, char *key);
 void		hashtbl_remove(hashtbl *h, char *key);
 void		hashtbl_delete(hashtbl *h);
-
 
 
 //FILES_MANAGING

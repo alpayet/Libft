@@ -1,37 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_remove_if.c                                 :+:      :+:    :+:   */
+/*   ft_lstremove_if.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 03:24:02 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/18 04:33:43 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/19 02:21:46 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void	ft_lst_remove_if(t_list **lst, void *data_ref, bool (*cmp)(void*, void*), void (*del)(void*))
+static void	ft_lst_remove_if_in_head(t_list **lst, void *data_ref,
+	bool (*cmp)(void*, void*), void (*del)(void*))
 {
 	t_list	*curr;
-	t_list	*prev;
 
-	if (lst == NULL || *lst == NULL || !cmp || !del)
-		return ;
 	while (*lst != NULL && cmp((*lst)->content, data_ref) == true)
 	{
 		curr = *lst;
 		*lst = (*lst)->next;
-		del(curr);
+		ft_lstdelone(curr, del);
 	}
-	curr = *lst;
+}
+
+static void	ft_lst_remove_if_after(t_list *prev, void *data_ref,
+	bool (*cmp)(void*, void*), void (*del)(void*))
+{
+	t_list	*curr;
+
+	if (prev == NULL)
+		return ;
+	curr = prev->next;
 	while (curr)
 	{
 		if (cmp(curr->content, data_ref) == true)
 		{
 			prev->next = curr->next;
-			del(curr);
+			ft_lstdelone(curr, del);
 			curr = prev->next;
 		}
 		else
@@ -42,3 +49,14 @@ void	ft_lst_remove_if(t_list **lst, void *data_ref, bool (*cmp)(void*, void*), v
 	}
 }
 
+void	ft_lstremove_if(t_list **lst, void *data_ref,
+	bool (*cmp)(void*, void*), void (*del)(void*))
+{
+	t_list	*curr;
+	t_list	*prev;
+
+	if (lst == NULL || *lst == NULL || !cmp || !del)
+		return ;
+	ft_lst_remove_if_in_head(lst, data_ref, cmp, del);
+	ft_lst_remove_if_after(*lst, data_ref, cmp, del);
+}

@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   queue_delete.c                                     :+:      :+:    :+:   */
+/*   ft_lstremove_next.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/17 21:50:13 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/19 03:31:23 by alpayet          ###   ########.fr       */
+/*   Created: 2025/06/18 22:53:41 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/19 04:53:50 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void queue_delete(queue *q, void (*del)(void *))
+void ft_lstremove_next(t_list **lst, t_list *prev, void (*del)(void*))
 {
-	size_t	i;
-	size_t	index_in_queue;
+	t_list *curr;
 
-	if (q == NULL)
+	if (lst == NULL || *lst == NULL || !del)
 		return ;
-	if (del != NULL && q->data != NULL && q->capacity != 0)
+	if (prev == NULL)
 	{
-		i = 0;
-		while (i < q->size)
-		{
-			index_in_queue = (q->front + i) % q->capacity;
-			del((char *)q->data + (index_in_queue * q->element_size));
-			i++;
-		}
+		curr = *lst;
+		*lst = (*lst)->next;
+		ft_lstdelone(curr, del);
+		return ;
 	}
-	free(q->data);
-	free(q);
+	curr = prev->next;
+	if (curr != NULL)
+	{
+		prev->next = curr->next;
+		ft_lstdelone(curr, del);
+	}
 }

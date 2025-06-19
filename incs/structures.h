@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 18:06:58 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/17 23:48:57 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/19 05:46:15 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_entry
 typedef struct s_hashtbl
 {
 	vector *vect;
+	size_t count; //total number of inserted elements
 }	t_hashtbl;
 
 #endif
