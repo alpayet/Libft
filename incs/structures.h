@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 18:06:58 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/19 05:46:15 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/21 04:46:40 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,13 @@ typedef struct s_entry
 	char *key;
 	void *value;
 } entry;
+
+typedef enum e_hashtbl_status {
+	HASHTBL_OK,
+	HASHTBL_ERR_INVALID,
+	HASHTBL_ERR_ALLOC,
+} t_hashtbl_status;
+
 
 typedef struct s_hashtbl
 {

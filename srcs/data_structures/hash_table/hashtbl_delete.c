@@ -6,19 +6,12 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 01:29:02 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/19 06:02:08 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/21 05:12:11 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
-
-static void bucket_clear(void *bucket)
-{
-	t_list *lst;
-
-	lst = (t_list *)bucket;
-	ft_lstclear(&lst, free);
-}
+void bucket_clear(void *bucket);
 
 void hashtbl_delete(hashtbl *h)
 {

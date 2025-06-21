@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 22:24:16 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/19 06:02:14 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/21 01:46:54 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ hashtbl *hashtbl_create(size_t capacity)
 		free(h);
 		return (NULL);
 	}
+	h->vect->size = capacity;
 	h->count = 0;
 	return (h);
 }

@@ -6,11 +6,16 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 00:31:29 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/19 05:53:52 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/21 05:39:52 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
+
+size_t	index_in_hashtbl(vector *vect, char *key)
+{
+	return (hash(key) % vect->size);
+}
 
 t_list *hashtbl_bucket(hashtbl *h, char *key)
 {
@@ -19,7 +24,7 @@ t_list *hashtbl_bucket(hashtbl *h, char *key)
 
 	if (h == NULL || key == NULL || h->vect == NULL || h->vect->size == 0)
 		return (NULL);
-	index_in_table = hash(key) % h->vect->size;
+	index_in_table = index_in_hashtbl(h->vect, key);
 	bucket = vector_get(h->vect, index_in_table);
 	return (bucket);
 }
@@ -45,35 +50,21 @@ entry *hashtbl_find_entry(t_list *bucket, char *key)
 	return (NULL);
 }
 
-void	hashtbl_change_bucket_head(hashtbl *h, t_list *new_bucket_head, char *key)
+void	hashtbl_change_bucket_head(vector *vect, t_list *new_bucket_head, char *key)
 {
 	size_t	index_in_table;
 
-	if (h == NULL || key == NULL || h->vect == NULL || h->vect->size == 0)
+	if (key == NULL || vect == NULL || vect->size == 0)
 		return ;
-	index_in_table = hash(key) % h->vect->size;
-	vector_set(h->vect, index_in_table, new_bucket_head);
+	index_in_table = index_in_hashtbl(vect, key);
+	vector_set(vect, index_in_table, new_bucket_head);
 }
 
-bool	hashtbl_resize(hashtbl *h)
+void bucket_clear(void *bucket)
 {
-	float	load_factor;
-	size_t	new_capacity;
+	t_list *lst;
 
-	if (h == NULL || h->vect == NULL)
-		return (true);
-	if (h->vect->capacity == 0)
-		new_capacity = INITIAL_BUCKET_COUNT;
-	else
-		new_capacity = h->vect->capacity;
-	load_factor = (float)h->count / (float)new_capacity;
-	if (load_factor > HASHTBL_LOAD_FACTOR_LIMIT)
-	{
-		new_capacity *= 2;
-		if (vector_resize(h->vect, new_capacity) == false)
-			return (false);
-	}
-	return (true);
+	lst = (t_list *)bucket;
+	ft_lstclear(&lst, free);
 }
-
 

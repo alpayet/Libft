@@ -6,13 +6,13 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 04:09:08 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/19 06:07:05 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/21 05:40:26 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 t_list	*hashtbl_bucket(hashtbl *h, char *key);
-void	hashtbl_change_bucket_head(hashtbl *h, t_list *new_bucket_head, char *key);
+void	hashtbl_change_bucket_head(vector *vect, t_list *new_bucket_head, char *key);
 
 void	hashtbl_remove(hashtbl *h, char *key)
 {
@@ -33,7 +33,7 @@ void	hashtbl_remove(hashtbl *h, char *key)
 		{
 			ft_lstremove_next(&bucket, prev, free);
 			if (prev == NULL)
-				hashtbl_change_bucket_head(h, bucket, key);
+				hashtbl_change_bucket_head(h->vect, bucket, key);
 			if (h->count != 0)
 				h->count--;
 			return ;
