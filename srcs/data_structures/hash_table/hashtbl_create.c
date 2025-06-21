@@ -6,13 +6,13 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 22:24:16 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/21 01:46:54 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/21 18:00:10 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-hashtbl *hashtbl_create(size_t capacity)
+hashtbl	*hashtbl_create(size_t capacity)
 {
 	hashtbl	*h;
 

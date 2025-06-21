@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 22:30:49 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/21 05:46:03 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/21 17:10:22 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,11 @@ t_hashtbl_status hashtbl_put(hashtbl *h, char *key, void *value)
 	if (hashtbl_resize(h) == false)
 		return (HASHTBL_ERR_ALLOC);
 	bucket = hashtbl_bucket(h, key);
-	if (bucket == NULL)
-	{
-		if (hashtbl_bucket_prepend(h->vect, &bucket, key, value) == HASHTBL_ERR_ALLOC)
-			return (HASHTBL_ERR_ALLOC);
-		h->count++;
-		return (HASHTBL_OK);
-	}
 	entry = hashtbl_find_entry(bucket, key);
 	if (entry == NULL)
 	{
-		if (hashtbl_bucket_prepend(h->vect, &bucket, key, value) == HASHTBL_ERR_ALLOC)
+		if (hashtbl_bucket_prepend(h->vect, &bucket,
+				key, value) == HASHTBL_ERR_ALLOC)
 			return (HASHTBL_ERR_ALLOC);
 		h->count++;
 	}

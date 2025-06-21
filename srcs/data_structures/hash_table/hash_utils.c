@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 00:31:29 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/21 05:39:52 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/21 17:58:19 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	index_in_hashtbl(vector *vect, char *key)
 	return (hash(key) % vect->size);
 }
 
-t_list *hashtbl_bucket(hashtbl *h, char *key)
+t_list	*hashtbl_bucket(hashtbl *h, char *key)
 {
 	t_list	*bucket;
 	size_t	index_in_table;
@@ -29,7 +29,7 @@ t_list *hashtbl_bucket(hashtbl *h, char *key)
 	return (bucket);
 }
 
-entry *hashtbl_find_entry(t_list *bucket, char *key)
+entry	*hashtbl_find_entry(t_list *bucket, char *key)
 {
 	entry	*node_entry;
 
@@ -50,7 +50,8 @@ entry *hashtbl_find_entry(t_list *bucket, char *key)
 	return (NULL);
 }
 
-void	hashtbl_change_bucket_head(vector *vect, t_list *new_bucket_head, char *key)
+void	hashtbl_change_bucket_head(vector *vect,
+	t_list *new_bucket_head, char *key)
 {
 	size_t	index_in_table;
 
@@ -60,11 +61,10 @@ void	hashtbl_change_bucket_head(vector *vect, t_list *new_bucket_head, char *key
 	vector_set(vect, index_in_table, new_bucket_head);
 }
 
-void bucket_clear(void *bucket)
+void	bucket_clear(void *bucket)
 {
-	t_list *lst;
+	t_list	*lst;
 
 	lst = (t_list *)bucket;
 	ft_lstclear(&lst, free);
 }
-
