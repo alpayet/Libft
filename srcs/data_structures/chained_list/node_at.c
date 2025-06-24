@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   lst_at.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 02:12:50 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/10 15:15:52 by alpayet          ###   ########.fr       */
+/*   Created: 2025/06/11 12:43:51 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/24 01:05:49 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+t_node *node_at(t_list *lst, size_t index)
 {
-	if (new == NULL)
-		return ;
-	if (*lst == NULL)
+	t_node	*node;
+
+	if (lst == NULL || index >= lst->size)
+		return (NULL);
+	node = lst->first;
+	while (index != 0 && node != NULL)
 	{
-		*lst = new;
-		//new->next = NULL;
-		return ;
+		index--;
+		node = node->next;
 	}
-	ft_lstlast(*lst)->next = new;
-	//new->next = NULL;
+	return (node);
 }

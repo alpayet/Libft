@@ -2,20 +2,22 @@
 
 #files
 SRC_FILES = \
-	data_structures/chained_list/ft_lstsize.c \
-	data_structures/chained_list/ft_lstget.c \
-	data_structures/chained_list/ft_lstset.c \
-	data_structures/chained_list/ft_lstnext.c \
-	data_structures/chained_list/ft_lst_at.c \
-	data_structures/chained_list/ft_lstnew.c \
-	data_structures/chained_list/ft_lstmap.c \
-	data_structures/chained_list/ft_lstlast.c \
-	data_structures/chained_list/ft_lstiter.c \
-	data_structures/chained_list/ft_lstdelone.c \
-	data_structures/chained_list/ft_lstclear.c \
-	data_structures/chained_list/ft_lstadd_front.c \
-	data_structures/chained_list/ft_lstadd_back.c \
-	data_structures/chained_list/ft_lst_remove_if.c \
+	data_structures/chained_list/lst_size.c \
+	data_structures/chained_list/lst_get.c \
+	data_structures/chained_list/lst_set.c \
+	data_structures/chained_list/lst_next.c \
+	data_structures/chained_list/lst_at.c \
+	data_structures/chained_list/lst_new.c \
+	data_structures/chained_list/lst_map.c \
+	data_structures/chained_list/lst_last.c \
+	data_structures/chained_list/lst_iter.c \
+	data_structures/chained_list/lst_delone.c \
+	data_structures/chained_list/lst_clear.c \
+	data_structures/chained_list/lst_add_front.c \
+	data_structures/chained_list/lst_add_back.c \
+	data_structures/chained_list/lst_remove_after.c \
+	data_structures/chained_list/lst_remove_first.c \
+	data_structures/chained_list/lst_remove_if.c \
 	data_structures/stack/stack_create.c \
 	data_structures/stack/stack_delete.c \
 	data_structures/stack/stack_is_empty.c \

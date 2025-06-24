@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 00:31:29 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/21 17:58:19 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/24 00:39:09 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ entry	*hashtbl_find_entry(t_list *bucket, char *key)
 		node_entry = (entry *)(bucket->content);
 		if (node_entry == NULL)
 		{
-			bucket = ft_lstnext(bucket);
+			bucket = node_next(bucket);
 			continue ;
 		}
 		if (ft_strcmp(key, node_entry->key) == 0)
 			return (node_entry);
-		bucket = ft_lstnext(bucket);
+		bucket = node_next(bucket);
 	}
 	return (NULL);
 }
@@ -66,5 +66,5 @@ void	bucket_clear(void *bucket)
 	t_list	*lst;
 
 	lst = (t_list *)bucket;
-	ft_lstclear(&lst, free);
+	lst_clear(&lst, free);
 }

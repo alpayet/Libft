@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   lst_add_front.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 03:33:24 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/10 13:50:30 by alpayet          ###   ########.fr       */
+/*   Created: 2024/11/13 23:28:01 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/24 01:26:50 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void	lst_add_front(t_list *lst, t_node *new)
 {
-	t_list	*next_alt;
-
-	if (*lst == NULL)
+	if (lst == NULL || new == NULL)
 		return ;
-	while (*lst != NULL)
-	{
-		next_alt = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = next_alt;
-	}
+	new->next = lst->first;
+	lst->first = new;
+	if (lst->last == NULL)
+		lst->last = new;
+	lst->size++;
 }
+

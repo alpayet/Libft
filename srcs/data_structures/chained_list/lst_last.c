@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstget.c                                        :+:      :+:    :+:   */
+/*   lst_last.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/11 12:44:05 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/11 12:51:50 by alpayet          ###   ########.fr       */
+/*   Created: 2024/11/14 01:10:24 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/24 00:20:32 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void *ft_lstget(t_list *node)
+t_node	*lst_last(t_list *lst)
 {
-	if (node == NULL)
+	if (lst == NULL)
 		return (NULL);
-	return (node->content);
+	return (lst->last);
 }

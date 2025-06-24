@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_at.c                                        :+:      :+:    :+:   */
+/*   lst_delone.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/11 12:43:51 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/11 13:02:31 by alpayet          ###   ########.fr       */
+/*   Created: 2024/11/14 03:02:45 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/24 00:18:52 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-t_list *ft_lst_at(t_list *lst, size_t index)
+void	lst_delone(t_node *node, void (*del)(void*))
 {
-	while (index != 0 && lst != NULL)
-	{
-		index--;
-		lst = lst->next;
-	}
-	return (lst);
+	if (node == NULL)
+		return ;
+	if (del != NULL)
+		del(node->content);
+	free(node);
 }

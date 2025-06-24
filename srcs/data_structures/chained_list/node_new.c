@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   node_new.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 00:21:05 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/11 12:36:08 by alpayet          ###   ########.fr       */
+/*   Created: 2025/06/24 00:43:48 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/24 00:44:01 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-size_t ft_lstsize(t_list *lst)
+t_node	*node_new(void *content)
 {
-	size_t	i;
+	t_node	*node;
 
-	if (lst == NULL)
-		return (0);
-	i = 0;
-	while (lst != NULL)
-	{
-		i++;
-		lst = lst->next;
-	}
-	return (i);
+	node = malloc(sizeof(*node));
+	if (node == NULL)
+		return (NULL);
+	node->content = content;
+	node->next = NULL;
+	return (node);
 }

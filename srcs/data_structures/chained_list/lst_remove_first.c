@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstremove_next.c                                :+:      :+:    :+:   */
+/*   lst_remove_first.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/18 22:53:41 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/19 04:53:50 by alpayet          ###   ########.fr       */
+/*   Created: 2025/06/24 01:53:28 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/24 02:13:02 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void ft_lstremove_next(t_list **lst, t_list *prev, void (*del)(void*))
+void lst_remove_first(t_list *lst, void (*del)(void*))
 {
-	t_list *curr;
-
-	if (lst == NULL || *lst == NULL || !del)
+	t_node	*node_del;
+	if (lst == NULL || lst->first == NULL)
 		return ;
-	if (prev == NULL)
-	{
-		curr = *lst;
-		*lst = (*lst)->next;
-		ft_lstdelone(curr, del);
-		return ;
-	}
-	curr = prev->next;
-	if (curr != NULL)
-	{
-		prev->next = curr->next;
-		ft_lstdelone(curr, del);
-	}
+	node_del = lst->first;
+	lst->first = node_del->next;
+	if (lst->last == node_del)
+		lst->last = NULL;
+	lst_delone(node_del, del);
+	if (lst->size != 0)
+		lst->size--;
 }

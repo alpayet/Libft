@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   lst_add_back.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 03:02:45 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/19 03:39:07 by alpayet          ###   ########.fr       */
+/*   Created: 2024/11/14 02:12:50 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/24 01:04:43 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+void	lst_add_back(t_list *lst, t_node *new)
 {
-	if (lst == NULL || del == NULL)
+	if (lst == NULL || new == NULL)
 		return ;
-	del(lst->content);
-	free(lst);
+	new->next = NULL;
+	if (lst->first == NULL)
+	{
+		lst->first = new;
+		lst->last = new;
+		return ;
+	}
+	lst->last->next = new;
+	lst->last = new;
+	lst->size++;
 }

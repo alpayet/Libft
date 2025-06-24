@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   lst_first.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 22:26:30 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/10 13:50:41 by alpayet          ###   ########.fr       */
+/*   Created: 2025/06/23 22:53:49 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/24 00:53:51 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-t_list *ft_lstnew(void *content)
+t_node	*lst_first(t_list *lst)
 {
-	t_list	*new;
-
-	new = malloc(sizeof(t_list));
-	if (new == NULL)
+	if (lst == NULL)
 		return (NULL);
-	new->content = content;
-	new->next = NULL;
-	return (new);
+	return (lst->first);
 }
-
-/*int	main(void)
-{
-	printf("%s", (char *)ft_lstnew("abc")->content);
-}*/

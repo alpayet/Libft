@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstset.c                                        :+:      :+:    :+:   */
+/*   lst_iter.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/11 12:44:00 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/11 12:56:14 by alpayet          ###   ########.fr       */
+/*   Created: 2024/11/14 04:29:56 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/24 00:20:15 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void ft_lstset(t_list *node, void *content)
+void	lst_iter(t_list *lst, void (*f)(void *))
 {
-	if (node == NULL)
+	t_node	*node;
+
+	if (lst == NULL || f == NULL)
 		return ;
-	node->content = content;
+	node = lst->first;
+	while (node != NULL)
+	{
+		f(node->content);
+		node = node->next;
+	}
 }
