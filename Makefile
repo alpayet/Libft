@@ -2,6 +2,16 @@
 
 #files
 SRC_FILES = \
+	data_structures/hash_table/hash_function.c \
+	data_structures/hash_table/hash_utils.c \
+	data_structures/hash_table/hashtbl_bucket_prepend.c \
+	data_structures/hash_table/hashtbl_contains.c \
+	data_structures/hash_table/hashtbl_create.c \
+	data_structures/hash_table/hashtbl_delete.c \
+	data_structures/hash_table/hashtbl_get.c \
+	data_structures/hash_table/hashtbl_put.c \
+	data_structures/hash_table/hashtbl_remove.c \
+	data_structures/hash_table/hashtbl_resize.c \
 	data_structures/chained_list/ft_lstsize.c \
 	data_structures/chained_list/ft_lstget.c \
 	data_structures/chained_list/ft_lstset.c \
@@ -15,7 +25,8 @@ SRC_FILES = \
 	data_structures/chained_list/ft_lstclear.c \
 	data_structures/chained_list/ft_lstadd_front.c \
 	data_structures/chained_list/ft_lstadd_back.c \
-	data_structures/chained_list/ft_lst_remove_if.c \
+	data_structures/chained_list/ft_lstremove_next.c \
+	data_structures/chained_list/ft_lstremove_if.c \
 	data_structures/stack/stack_create.c \
 	data_structures/stack/stack_delete.c \
 	data_structures/stack/stack_is_empty.c \

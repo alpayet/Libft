@@ -6,12 +6,13 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 04:18:37 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/21 05:42:20 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/23 02:24:25 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
-void	hashtbl_change_bucket_head(vector *vect, t_list *new_bucket_head, char *key);
+t_list	*hashtbl_bucket(hashtbl *h, char *key);
+void	hashtbl_change_bucket_head(vector *vect, t_list **new_bucket_head, char *key);
 
 static entry *new_entry(char *key, void *value)
 {

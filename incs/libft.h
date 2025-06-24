@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:53:27 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/19 05:54:08 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/23 01:47:20 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,20 @@ void		queue_delete(queue *q, void (*del)(void *));
 typedef struct s_hashtbl hashtbl;
 #define INITIAL_BUCKET_COUNT 16
 #define HASHTBL_LOAD_FACTOR_LIMIT 0.75f
-hashtbl		*hashtbl_create(size_t capacity);
-void		hashtbl_put(hashtbl *h, char *key, void *value);
-bool		hashtbl_contains(hashtbl *h, char *key);
-void		*hashtbl_get(hashtbl *h, char *key);
-void		hashtbl_remove(hashtbl *h, char *key);
-void		hashtbl_delete(hashtbl *h);
+
+typedef enum e_hashtbl_status
+{
+	HASHTBL_OK,
+	HASHTBL_ERR_INVALID,
+	HASHTBL_ERR_ALLOC
+}	t_hashtbl_status;
+
+hashtbl				*hashtbl_create(size_t capacity);
+t_hashtbl_status	hashtbl_put(hashtbl *h, char *key, void *value);
+bool				hashtbl_contains(hashtbl *h, char *key);
+void				*hashtbl_get(hashtbl *h, char *key);
+void				hashtbl_remove(hashtbl *h, char *key);
+void				hashtbl_delete(hashtbl *h);
 
 
 //FILES_MANAGING

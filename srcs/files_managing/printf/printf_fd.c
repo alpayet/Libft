@@ -6,19 +6,18 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 21:05:06 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/05 15:50:37 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/22 20:50:20 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-int	ft_conversions_s(va_list args, int fd);
-int	ft_conversions_d_or_i(va_list args, int fd);
-int	ft_conversions_u(va_list args, int fd);
-int	ft_conversions_x_or_upperx(char format_char, va_list args, int fd);
-int	ft_conversions_p(va_list args, int fd);
+int	ft_conversions_s_fd(va_list args, int fd);
+int	ft_conversions_d_or_i_fd(va_list args, int fd);
+int	ft_conversions_u_fd(va_list args, int fd);
+int	ft_conversions_x_or_upperx_fd(char format_char, va_list args, int fd);
+int	ft_conversions_p_fd(va_list args, int fd);
 
-
-int	ft_putnbr_base_ul(unsigned long nbr, char *base, int fd)
+int	ft_putnbr_base_ul_fd(unsigned long nbr, char *base, int fd)
 {
 	int	nbr_printed;
 	int	quotient_printed;
@@ -27,7 +26,7 @@ int	ft_putnbr_base_ul(unsigned long nbr, char *base, int fd)
 	quotient_printed = 0;
 	if (nbr >= ft_strlen(base))
 	{
-		quotient_printed = ft_putnbr_base_ul(nbr / ft_strlen(base), base, fd);
+		quotient_printed = ft_putnbr_base_ul_fd(nbr / ft_strlen(base), base, fd);
 		if (quotient_printed == -1)
 			return (-1);
 		nbr_printed = quotient_printed + 1;
@@ -46,15 +45,15 @@ static int	ft_check_percent(char format_char, va_list args, int fd)
 	if (format_char == '%')
 		return (ft_putchar_fd('%', fd));
 	if (format_char == 's')
-		return (ft_conversions_s(args, fd));
+		return (ft_conversions_s_fd(args, fd));
 	if (format_char == 'p')
-		return (ft_conversions_p(args, fd));
+		return (ft_conversions_p_fd(args, fd));
 	if (format_char == 'd' || format_char == 'i')
-		return (ft_conversions_d_or_i(args, fd));
+		return (ft_conversions_d_or_i_fd(args, fd));
 	if (format_char == 'u')
-		return (ft_conversions_u(args, fd));
+		return (ft_conversions_u_fd(args, fd));
 	if (format_char == 'x' || format_char == 'X')
-		return (ft_conversions_x_or_upperx(format_char, args, fd));
+		return (ft_conversions_x_or_upperx_fd(format_char, args, fd));
 	return (-1);
 }
 

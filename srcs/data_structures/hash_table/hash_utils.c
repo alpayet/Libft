@@ -6,27 +6,35 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 00:31:29 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/21 17:58:19 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/23 03:02:29 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
+size_t	hash(char *key);
+
 size_t	index_in_hashtbl(vector *vect, char *key)
 {
-	return (hash(key) % vect->size);
+	if (vect->capacity == 0)
+		return (SIZE_MAX);
+	return (hash(key) % vect->capacity);
 }
 
 t_list	*hashtbl_bucket(hashtbl *h, char *key)
 {
-	t_list	*bucket;
 	size_t	index_in_table;
+	t_list	**bucket_ptr;
 
-	if (h == NULL || key == NULL || h->vect == NULL || h->vect->size == 0)
+	if (h == NULL || key == NULL || h->vect == NULL)
 		return (NULL);
 	index_in_table = index_in_hashtbl(h->vect, key);
-	bucket = vector_get(h->vect, index_in_table);
-	return (bucket);
+	if (index_in_table == SIZE_MAX)
+		return (NULL);
+	bucket_ptr = (t_list **)vector_get(h->vect, index_in_table);
+	if (bucket_ptr == NULL)
+		return (NULL);
+	return (*bucket_ptr);
 }
 
 entry	*hashtbl_find_entry(t_list *bucket, char *key)
@@ -51,20 +59,22 @@ entry	*hashtbl_find_entry(t_list *bucket, char *key)
 }
 
 void	hashtbl_change_bucket_head(vector *vect,
-	t_list *new_bucket_head, char *key)
+	t_list **new_bucket_head, char *key)
 {
 	size_t	index_in_table;
 
-	if (key == NULL || vect == NULL || vect->size == 0)
+	if (key == NULL || vect == NULL || new_bucket_head == NULL)
 		return ;
 	index_in_table = index_in_hashtbl(vect, key);
+	if (index_in_table == SIZE_MAX)
+		return ;
 	vector_set(vect, index_in_table, new_bucket_head);
 }
 
-void	bucket_clear(void *bucket)
+void	bucket_clear(void *bucket_ptr)
 {
-	t_list	*lst;
+	t_list	**lst;
 
-	lst = (t_list *)bucket;
-	ft_lstclear(&lst, free);
+	lst = (t_list **)bucket_ptr;
+	ft_lstclear(lst, free);
 }

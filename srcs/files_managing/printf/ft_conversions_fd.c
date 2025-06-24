@@ -6,14 +6,14 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 21:11:58 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/05 15:50:44 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/22 20:49:37 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-int	ft_putnbr_base_ul(unsigned long nbr, char *base, int fd);
+int	ft_putnbr_base_ul_fd(unsigned long nbr, char *base, int fd);
 
-int	ft_conversions_s(va_list args, int fd)
+int	ft_conversions_s_fd(va_list args, int fd)
 {
 	char	*str;
 
@@ -23,7 +23,7 @@ int	ft_conversions_s(va_list args, int fd)
 	return (ft_putstr_fd(str, fd));
 }
 
-int	ft_conversions_d_or_i(va_list args, int fd)
+int	ft_conversions_d_or_i_fd(va_list args, int fd)
 {
 	long	nbr;
 
@@ -32,30 +32,30 @@ int	ft_conversions_d_or_i(va_list args, int fd)
 	{
 		if (ft_putchar_fd('-', fd) == -1)
 			return (-1);
-		return (ft_putnbr_base_ul(-nbr, "0123456789", fd) + 1);
+		return (ft_putnbr_base_ul_fd(-nbr, "0123456789", fd) + 1);
 	}
-	return (ft_putnbr_base_ul(nbr, "0123456789", fd));
+	return (ft_putnbr_base_ul_fd(nbr, "0123456789", fd));
 }
 
-int	ft_conversions_u(va_list args, int fd)
+int	ft_conversions_u_fd(va_list args, int fd)
 {
 	unsigned int	nbr;
 
 	nbr = va_arg(args, unsigned int);
-	return (ft_putnbr_base_ul(nbr, "0123456789", fd));
+	return (ft_putnbr_base_ul_fd(nbr, "0123456789", fd));
 }
 
-int	ft_conversions_x_or_upperx(char format_char, va_list args, int fd)
+int	ft_conversions_x_or_upperx_fd(char format_char, va_list args, int fd)
 {
 	unsigned int	nbr;
 
 	nbr = va_arg(args, unsigned int);
 	if (format_char == 'x')
-		return (ft_putnbr_base_ul(nbr, "0123456789abcdef", fd));
-	return (ft_putnbr_base_ul(nbr, "0123456789ABCDEF", fd));
+		return (ft_putnbr_base_ul_fd(nbr, "0123456789abcdef", fd));
+	return (ft_putnbr_base_ul_fd(nbr, "0123456789ABCDEF", fd));
 }
 
-int	ft_conversions_p(va_list args, int fd)
+int	ft_conversions_p_fd(va_list args, int fd)
 {
 	void	*addr;
 
@@ -64,5 +64,5 @@ int	ft_conversions_p(va_list args, int fd)
 		return (ft_putstr_fd("(nil)", fd));
 	if (ft_putstr_fd("0x", fd) == -1)
 		return (-1);
-	return (ft_putnbr_base_ul((unsigned long)addr, "0123456789abcdef", fd) + 2);
+	return (ft_putnbr_base_ul_fd((unsigned long)addr, "0123456789abcdef", fd) + 2);
 }

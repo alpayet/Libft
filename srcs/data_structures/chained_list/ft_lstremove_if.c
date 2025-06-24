@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 03:24:02 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/19 02:21:46 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/22 20:25:09 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,7 @@ static void	ft_lst_remove_if_after(t_list *prev, void *data_ref,
 void	ft_lstremove_if(t_list **lst, void *data_ref,
 	bool (*cmp)(void*, void*), void (*del)(void*))
 {
-	t_list	*curr;
-	t_list	*prev;
-
-	if (lst == NULL || *lst == NULL || !cmp || !del)
+	if (lst == NULL || *lst == NULL || !cmp)
 		return ;
 	ft_lst_remove_if_in_head(lst, data_ref, cmp, del);
 	ft_lst_remove_if_after(*lst, data_ref, cmp, del);
