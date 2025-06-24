@@ -6,13 +6,13 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 04:18:37 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/24 04:26:48 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/24 06:18:49 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 t_list	*hashtbl_bucket(hashtbl *h, char *key);
-void	hashtbl_change_bucket_head(vector *vect, t_list **new_bucket_head, char *key);
+void	hashtbl_change_bucket(vector *vect, t_list **new_bucket_ptr, char *key);
 
 static entry *new_entry(char *key, void *value)
 {
@@ -26,23 +26,35 @@ static entry *new_entry(char *key, void *value)
 	return(new_entry);
 }
 
-t_hashtbl_status hashtbl_bucket_prepend(vector *vect, t_list **bucket, char *key, void *value)
+t_hashtbl_status hashtbl_bucket_prepend(vector *vect, t_list *bucket, char *key, void *value)
 {
-	t_list	*new_node;
 	entry	*entry;
+	t_node	*new_node;
 
 	if (vect == NULL || key == NULL)
 		return (HASHTBL_ERR_INVALID);
 	entry = new_entry(key, value);
 	if (entry == NULL)
 		return (HASHTBL_ERR_ALLOC);
-	new_node = lst_new(entry);
-	if (new_node == NULL)
+	if (bucket == NULL)
 	{
-		free(entry);
-		return (HASHTBL_ERR_ALLOC);
+		bucket = lst_new(entry);
+		if (bucket == NULL)
+		{
+			free(entry);
+			return (HASHTBL_ERR_ALLOC);
+		}
+		hashtbl_change_bucket(vect, &bucket, key);
 	}
-	lst_add_front(bucket, new_node);
-	hashtbl_change_bucket_head(vect, bucket, key);
+	else
+	{
+		new_node = node_new(entry);
+		if (new_node == NULL)
+		{
+			free(entry);
+			return (HASHTBL_ERR_ALLOC);
+		}
+		lst_add_front(bucket, new_node);
+	}
 	return (HASHTBL_OK);
 }

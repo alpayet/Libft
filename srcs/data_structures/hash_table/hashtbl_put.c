@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 22:30:49 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/23 02:27:20 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/24 06:50:50 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 bool				hashtbl_resize(hashtbl *h);
 t_list				*hashtbl_bucket(hashtbl *h, char *key);
 t_hashtbl_status	hashtbl_bucket_prepend(vector *vect,
-	t_list **bucket, char *key, void *value);
+	t_list *bucket, char *key, void *value);
 entry				*hashtbl_find_entry(t_list *bucket, char *key);
 
 t_hashtbl_status hashtbl_put(hashtbl *h, char *key, void *value)
@@ -30,12 +30,9 @@ t_hashtbl_status hashtbl_put(hashtbl *h, char *key, void *value)
 	entry = hashtbl_find_entry(bucket, key);
 	if (entry == NULL)
 	{
-		if (hashtbl_bucket_prepend(h->vect, &bucket,
+		if (hashtbl_bucket_prepend(h->vect, bucket,
 				key, value) == HASHTBL_ERR_ALLOC)
 			return (HASHTBL_ERR_ALLOC);
-		t_list	*test = hashtbl_bucket(h, key);
-		if(!test)
-			return(HASHTBL_ERR_INVALID);
 		h->count++;
 	}
 	else

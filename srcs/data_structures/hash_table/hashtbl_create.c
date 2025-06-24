@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 22:24:16 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/21 18:00:10 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/24 05:01:56 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ hashtbl	*hashtbl_create(size_t capacity)
 		return (NULL);
 	if (capacity == 0)
 		capacity = INITIAL_BUCKET_COUNT;
-	h->vect = vector_create(capacity, sizeof(void *));
+	h->vect = vector_create(capacity, sizeof(t_list *));
 	if (h->vect == NULL)
 	{
 		free(h);

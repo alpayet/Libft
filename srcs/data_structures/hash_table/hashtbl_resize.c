@@ -6,13 +6,13 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 01:01:08 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/23 03:17:28 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/24 07:00:43 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 size_t hash(char *key);
-t_hashtbl_status hashtbl_bucket_prepend(vector *vect, t_list **bucket,
+t_hashtbl_status hashtbl_bucket_prepend(vector *vect, t_list *bucket,
 	char *key, void *value);
 void bucket_clear(void *bucket);
 
@@ -23,7 +23,7 @@ static bool	insert_in_new_vect(vector *new_vector, entry *node_entry)
 
 	new_index = hash(node_entry->key) % new_vector->capacity;
 	new_bucket = *(t_list **)vector_get(new_vector, new_index);
-	if (hashtbl_bucket_prepend(new_vector, &new_bucket,
+	if (hashtbl_bucket_prepend(new_vector, new_bucket,
 		node_entry->key, node_entry->value) == HASHTBL_ERR_ALLOC)
 		return (false);
 	return (true);
@@ -32,6 +32,7 @@ static bool	insert_in_new_vect(vector *new_vector, entry *node_entry)
 static bool	reinsert_hashtbl_elements(vector *old_vector, vector *new_vector)
 {
 	t_list	*old_bucket;
+	t_node	*node;
 	entry	*node_entry;
 	size_t	i;
 
@@ -39,15 +40,19 @@ static bool	reinsert_hashtbl_elements(vector *old_vector, vector *new_vector)
 	while (i < old_vector->capacity)
 	{
 		old_bucket = *(t_list **)vector_get(old_vector, i);
-		while (old_bucket != NULL)
+		if (old_bucket != NULL)
 		{
-			node_entry = (entry *)(old_bucket->content);
-			if (node_entry != NULL)
+			node = old_bucket->first;
+			while (node != NULL)
 			{
-				if (insert_in_new_vect(new_vector, node_entry) == false)
-					return (false);
+				node_entry = (entry *)(node->content);
+				if (node_entry != NULL)
+				{
+					if (insert_in_new_vect(new_vector, node_entry) == false)
+						return (false);
+				}
+				node = node_next(node);
 			}
-			old_bucket = ft_lstnext(old_bucket);
 		}
 		i++;
 	}
