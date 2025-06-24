@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstget.c                                        :+:      :+:    :+:   */
+/*   lst_iter.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/11 12:44:05 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/11 12:51:50 by alpayet          ###   ########.fr       */
+/*   Created: 2024/11/14 04:29:56 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/24 00:20:15 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void *ft_lstget(t_list *node)
+void	lst_iter(t_list *lst, void (*f)(void *))
 {
-	if (node == NULL)
-		return (NULL);
-	return (node->content);
+	t_node	*node;
+
+	if (lst == NULL || f == NULL)
+		return ;
+	node = lst->first;
+	while (node != NULL)
+	{
+		f(node->content);
+		node = node->next;
+	}
 }

@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_at.c                                        :+:      :+:    :+:   */
+/*   lst_add_back.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/11 12:43:51 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/11 13:02:31 by alpayet          ###   ########.fr       */
+/*   Created: 2024/11/14 02:12:50 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/24 01:04:43 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-t_list *ft_lst_at(t_list *lst, size_t index)
+void	lst_add_back(t_list *lst, t_node *new)
 {
-	while (index != 0 && lst != NULL)
+	if (lst == NULL || new == NULL)
+		return ;
+	new->next = NULL;
+	if (lst->first == NULL)
 	{
-		index--;
-		lst = lst->next;
+		lst->first = new;
+		lst->last = new;
+		return ;
 	}
-	return (lst);
+	lst->last->next = new;
+	lst->last = new;
+	lst->size++;
 }

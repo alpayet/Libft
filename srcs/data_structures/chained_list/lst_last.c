@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   lst_last.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 02:12:50 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/10 15:15:52 by alpayet          ###   ########.fr       */
+/*   Created: 2024/11/14 01:10:24 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/24 00:20:32 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+t_node	*lst_last(t_list *lst)
 {
-	if (new == NULL)
-		return ;
-	if (*lst == NULL)
-	{
-		*lst = new;
-		//new->next = NULL;
-		return ;
-	}
-	ft_lstlast(*lst)->next = new;
-	//new->next = NULL;
+	if (lst == NULL)
+		return (NULL);
+	return (lst->last);
 }

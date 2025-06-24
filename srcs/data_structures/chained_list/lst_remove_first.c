@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstset.c                                        :+:      :+:    :+:   */
+/*   lst_remove_first.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/11 12:44:00 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/11 12:56:14 by alpayet          ###   ########.fr       */
+/*   Created: 2025/06/24 01:53:28 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/24 02:13:02 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void ft_lstset(t_list *node, void *content)
+void lst_remove_first(t_list *lst, void (*del)(void*))
 {
-	if (node == NULL)
+	t_node	*node_del;
+	if (lst == NULL || lst->first == NULL)
 		return ;
-	node->content = content;
+	node_del = lst->first;
+	lst->first = node_del->next;
+	if (lst->last == node_del)
+		lst->last = NULL;
+	lst_delone(node_del, del);
+	if (lst->size != 0)
+		lst->size--;
 }

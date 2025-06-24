@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   lst_clear.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 01:10:24 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/10 13:50:36 by alpayet          ###   ########.fr       */
+/*   Created: 2024/11/14 03:33:24 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/24 00:18:52 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-t_list	*ft_lstlast(t_list *lst)
+void	lst_clear(t_list *lst, void (*del)(void*))
 {
+	t_node	*new_first;
+
 	if (lst == NULL)
-		return (NULL);
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
+		return ;
+	while (lst->first != NULL)
+	{
+		new_first = lst->first->next;
+		lst_delone(lst->first, del);
+		lst->first = new_first;
+	}
+	free(lst);
 }

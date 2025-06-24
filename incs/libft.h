@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:53:27 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/23 01:47:20 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/24 04:24:12 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,26 @@ char		*ft_itoa(int n);
 
 //   CHAINED_LIST
 
+typedef struct s_node t_node;
 typedef struct s_list t_list;
-t_list		*ft_lstnew(void *content);
-size_t		ft_lstsize(t_list *lst);
-void		*ft_lstget(t_list *node);
-void		ft_lstset(t_list *node, void *content);
-t_list		*ft_lstnext(t_list *node);
-t_list		*ft_lst_at(t_list *lst, size_t index);
-t_list		*ft_lstlast(t_list *lst);
-void		ft_lstadd_front(t_list **lst, t_list *new);
-void		ft_lstadd_back(t_list **lst, t_list *new);
-void		ft_lstdelone(t_list *node, void (*del)(void*));
-void		ft_lstremove_next(t_list **lst, t_list *prev, void (*del)(void*));
-void		ft_lstremove_if(t_list **lst, void *data_ref, bool (*cmp)(void*, void*), void (*del)(void*));
-void		ft_lstclear(t_list **lst, void (*del)(void*));
-void		ft_lstiter(t_list *lst, void (*f)(void *));
-t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_list		*lst_new(void *content);
+t_node		*node_new(void *content);
+t_node		*lst_first(t_list *lst);
+t_node		*lst_last(t_list *lst);
+void		lst_add_front(t_list *lst, t_node *new);
+void		lst_add_back(t_list *lst, t_node *new);
+void		lst_delone(t_node *node, void (*del)(void*));
+void		lst_remove_first(t_list *lst, void (*del)(void*));
+void		lst_remove_after(t_list *lst, t_node *node, void (*del)(void*));
+void		lst_remove_if(t_list *lst, void *data_ref,
+	bool (*cmp)(void*, void*), void (*del)(void*));
+void		lst_clear(t_list *lst, void (*del)(void*));
+void		lst_iter(t_list *lst, void (*f)(void *));
+t_list		*lst_map(t_list *lst, void *(*f)(void *), void (*del)(void *));
+void		*node_get(t_node *node);
+void		node_set(t_node *node, void *content);
+t_node		*node_next(t_node *node);
+t_node		*node_at(t_list *lst, size_t index);
 
 //   VECTOR
 

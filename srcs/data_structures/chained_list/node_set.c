@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   node_set.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 23:28:01 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/10 13:50:28 by alpayet          ###   ########.fr       */
+/*   Created: 2025/06/11 12:44:00 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/24 02:38:26 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	node_set(t_node *node, void *content)
 {
-	if (new == NULL)
+	if (node == NULL)
 		return ;
-	new->next = *lst;
-	*lst = new;
+	node->content = content;
 }

@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   lst_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:57:03 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/10 13:50:38 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/06/24 00:37:00 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*lst_map(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*lst_f_first;
-	t_list	*lst_f_new;
+	t_node	*node;
+	t_list	*lst_f;
+	t_node	*new_node_f;
 
 	if (lst == NULL || f == NULL || del == NULL)
 		return (NULL);
-	lst_f_first = ft_lstnew(f(lst->content));
-	if (lst_f_first == NULL)
+	lst_f = lst_new(f(lst->first->content));
+	if (lst_f == NULL)
 		return (NULL);
-	lst = lst->next;
-	while (lst != NULL)
+	node = lst->first->next;
+	while (node != NULL)
 	{
-		lst_f_new = ft_lstnew(f(lst->content));
-		if (lst_f_new == NULL)
+		new_node_f = node_new(f(node->content));
+		if (new_node_f == NULL)
 		{
-			ft_lstclear(&lst_f_first, del);
+			lst_clear(lst_f, del);
 			return (NULL);
 		}
-		ft_lstadd_back(&lst_f_first, lst_f_new);
-		lst = lst->next;
+		lst_add_back(lst_f, new_node_f);
+		node = node->next;
 	}
-	return (lst_f_first);
+	return (lst_f);
 }
 

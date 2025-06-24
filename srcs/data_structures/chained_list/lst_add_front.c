@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstremove_next.c                                :+:      :+:    :+:   */
+/*   lst_add_front.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/18 22:53:41 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/22 20:24:52 by alpayet          ###   ########.fr       */
+/*   Created: 2024/11/13 23:28:01 by alpayet           #+#    #+#             */
+/*   Updated: 2025/06/24 01:26:50 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void ft_lstremove_next(t_list **lst, t_list *prev, void (*del)(void*))
+void	lst_add_front(t_list *lst, t_node *new)
 {
-	t_list *curr;
-
-	if (lst == NULL || *lst == NULL)
+	if (lst == NULL || new == NULL)
 		return ;
-	if (prev == NULL)
-	{
-		curr = *lst;
-		*lst = (*lst)->next;
-		ft_lstdelone(curr, del);
-		return ;
-	}
-	curr = prev->next;
-	if (curr != NULL)
-	{
-		prev->next = curr->next;
-		ft_lstdelone(curr, del);
-	}
+	new->next = lst->first;
+	lst->first = new;
+	if (lst->last == NULL)
+		lst->last = new;
+	lst->size++;
 }
+
