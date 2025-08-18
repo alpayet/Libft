@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_next.c                                         :+:      :+:    :+:   */
+/*   bin_tree_size.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/11 12:43:57 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/24 00:40:00 by alpayet          ###   ########.fr       */
+/*   Created: 2025/08/14 15:57:24 by alpayet           #+#    #+#             */
+/*   Updated: 2025/08/14 16:09:40 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-t_node *node_next(t_node *node)
+size_t	bin_tree_size(bin_tree *tree)
 {
-	if (node == NULL)
-		return (NULL);
-	return (node->next);
+	if (tree == NULL)
+		return (0);
+	return (1 + bin_tree_size(tree->left) + bin_tree_size(tree->right));
 }

@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 04:18:37 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/24 06:18:49 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:37:57 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static entry *new_entry(char *key, void *value)
 t_hashtbl_status hashtbl_bucket_prepend(vector *vect, t_list *bucket, char *key, void *value)
 {
 	entry	*entry;
-	t_node	*new_node;
+	t_lst_node	*new_node;
 
 	if (vect == NULL || key == NULL)
 		return (HASHTBL_ERR_INVALID);
@@ -48,7 +48,7 @@ t_hashtbl_status hashtbl_bucket_prepend(vector *vect, t_list *bucket, char *key,
 	}
 	else
 	{
-		new_node = node_new(entry);
+		new_node = lst_node_new(entry);
 		if (new_node == NULL)
 		{
 			free(entry);

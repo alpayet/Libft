@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_iter.c                                         :+:      :+:    :+:   */
+/*   bin_tree_create.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 04:29:56 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/15 16:37:35 by alpayet          ###   ########.fr       */
+/*   Created: 2025/08/14 15:52:06 by alpayet           #+#    #+#             */
+/*   Updated: 2025/08/14 15:58:44 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void	lst_iter(t_list *lst, void (*f)(void *))
+bin_tree *bin_tree_create(bin_tree *left, void *content, bin_tree *right)
 {
-	t_lst_node	*node;
+	bin_tree *tree;
 
-	if (lst == NULL || f == NULL)
-		return ;
-	node = lst->first;
-	while (node != NULL)
-	{
-		f(node->content);
-		node = node->next;
-	}
+	tree = malloc(sizeof(*tree));
+	if (tree == NULL)
+		return (NULL);
+	tree->left = left;
+	tree->content = content;
+	tree->right = right;
+	return (tree);
 }

@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 04:09:08 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/24 06:18:15 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:38:38 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	hashtbl_change_bucket(vector *vect, t_list **new_bucket_ptr, char *key);
 void	hashtbl_remove(hashtbl *h, char *key)
 {
 	t_list	*bucket;
-	t_node	*prev;
-	t_node	*curr;
+	t_lst_node	*prev;
+	t_lst_node	*curr;
 
 	bucket = hashtbl_bucket(h, key);
 	if (bucket == NULL)
@@ -39,6 +39,6 @@ void	hashtbl_remove(hashtbl *h, char *key)
 			return ;
 		}
 		prev = curr;
-		curr = node_next(curr);
+		curr = lst_node_next(curr);
 	}
 }

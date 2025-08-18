@@ -6,15 +6,15 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:53:41 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/24 04:25:02 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:37:35 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void	lst_remove_after(t_list *lst, t_node *node, void (*del)(void*))
+void	lst_remove_after(t_list *lst, t_lst_node *node, void (*del)(void*))
 {
-	t_node *node_del;
+	t_lst_node *node_del;
 
 	if (lst == NULL || node == NULL)
 		return ;

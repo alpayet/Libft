@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 18:06:58 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/24 04:23:52 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/08/17 01:40:40 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 # define STRUCTURES
 # include "libft.h"
 
-typedef struct s_node
+typedef struct s_lst_node
 {
 	void	*content;
-	t_node	*next;
-}	t_node;
+	t_lst_node	*next;
+}	t_lst_node;
 
 typedef struct s_list
 {
-	t_node	*first;
-	t_node	*last;
+	t_lst_node	*first;
+	t_lst_node	*last;
 	size_t	size;
 }	t_list;
 
@@ -60,5 +60,26 @@ typedef struct s_hashtbl
 	vector *vect;
 	size_t count; //total number of inserted elements
 }	t_hashtbl;
+
+typedef struct s_bin_tree
+{
+	bin_tree	*left;
+	void		*content;
+	bin_tree	*right;
+}	bin_tree;
+
+typedef struct s_bst_node
+{
+	bst_node	*left;
+	void		*key;
+	void		*value;
+	bst_node	*right;
+}	bst_node;
+
+typedef struct s_bst
+{
+	bst_node	*root;
+	int			(*key_cmp)(void *, void *);
+}	bst;
 
 #endif

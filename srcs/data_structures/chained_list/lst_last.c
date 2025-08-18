@@ -6,13 +6,13 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 01:10:24 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/24 00:20:32 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:37:35 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-t_node	*lst_last(t_list *lst)
+t_lst_node	*lst_last(t_list *lst)
 {
 	if (lst == NULL)
 		return (NULL);

@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   node_new.c                                         :+:      :+:    :+:   */
+/*   node_get.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/24 00:43:48 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/24 00:44:01 by alpayet          ###   ########.fr       */
+/*   Created: 2025/06/11 12:44:05 by alpayet           #+#    #+#             */
+/*   Updated: 2025/08/15 16:38:12 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-t_node	*node_new(void *content)
+void	*lst_node_get(t_lst_node *node)
 {
-	t_node	*node;
-
-	node = malloc(sizeof(*node));
 	if (node == NULL)
 		return (NULL);
-	node->content = content;
-	node->next = NULL;
-	return (node);
+	return (node->content);
 }

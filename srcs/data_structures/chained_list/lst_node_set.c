@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_iter.c                                         :+:      :+:    :+:   */
+/*   node_set.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 04:29:56 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/15 16:37:35 by alpayet          ###   ########.fr       */
+/*   Created: 2025/06/11 12:44:00 by alpayet           #+#    #+#             */
+/*   Updated: 2025/08/15 16:38:26 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void	lst_iter(t_list *lst, void (*f)(void *))
+void	lst_node_set(t_lst_node *node, void *content)
 {
-	t_lst_node	*node;
-
-	if (lst == NULL || f == NULL)
+	if (node == NULL)
 		return ;
-	node = lst->first;
-	while (node != NULL)
-	{
-		f(node->content);
-		node = node->next;
-	}
+	node->content = content;
 }

@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_iter.c                                         :+:      :+:    :+:   */
+/*   bin_tree_delete.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 04:29:56 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/15 16:37:35 by alpayet          ###   ########.fr       */
+/*   Created: 2025/08/14 16:26:36 by alpayet           #+#    #+#             */
+/*   Updated: 2025/08/14 16:42:58 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void	lst_iter(t_list *lst, void (*f)(void *))
+void	bin_tree_delete(bin_tree *tree, void (*del)(void *))
 {
-	t_lst_node	*node;
-
-	if (lst == NULL || f == NULL)
+	if (tree == NULL)
 		return ;
-	node = lst->first;
-	while (node != NULL)
-	{
-		f(node->content);
-		node = node->next;
-	}
+	bin_tree_delete(tree->left, del);
+	bin_tree_delete(tree->right, del);
+	if (del != NULL)
+		del(tree->content);
+	free(tree);
 }

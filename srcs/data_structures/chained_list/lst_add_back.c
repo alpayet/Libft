@@ -6,13 +6,13 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 02:12:50 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/24 01:04:43 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:37:35 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void	lst_add_back(t_list *lst, t_node *new)
+void	lst_add_back(t_list *lst, t_lst_node *new)
 {
 	if (lst == NULL || new == NULL)
 		return ;

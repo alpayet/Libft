@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_iter.c                                         :+:      :+:    :+:   */
+/*   bst_min.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 04:29:56 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/15 16:37:35 by alpayet          ###   ########.fr       */
+/*   Created: 2025/08/16 00:17:58 by alpayet           #+#    #+#             */
+/*   Updated: 2025/08/16 03:38:41 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void	lst_iter(t_list *lst, void (*f)(void *))
-{
-	t_lst_node	*node;
+void			*bst_min_recursive(bst_node *root);
+void			bst_remove_min(bst *tree, void (*del)(void *));
+void			bst_delete_node(bst_node *node, void (*del)(void *));
 
-	if (lst == NULL || f == NULL)
-		return ;
-	node = lst->first;
-	while (node != NULL)
-	{
-		f(node->content);
-		node = node->next;
-	}
+void	*bst_min(bst *tree)
+{
+	if (tree == NULL)
+		return (NULL);
+	return (bst_min_recursive(tree->root));
+}
+
+void	*bst_min_recursive(bst_node *root)
+{
+	if (root->left == NULL)
+		return (root->key);
+	return (bst_min_recursive(root->left));
 }

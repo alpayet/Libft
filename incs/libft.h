@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:53:27 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/24 04:24:12 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/08/17 01:40:22 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,30 +40,30 @@ char		*ft_itoa(int n);
 
 //DATA_STRUCTURES
 
-//   CHAINED_LIST
+// CHAINED_LIST
 
-typedef struct s_node t_node;
+typedef struct s_lst_node t_lst_node;
 typedef struct s_list t_list;
-t_list		*lst_new(void *content);
-t_node		*node_new(void *content);
-t_node		*lst_first(t_list *lst);
-t_node		*lst_last(t_list *lst);
-void		lst_add_front(t_list *lst, t_node *new);
-void		lst_add_back(t_list *lst, t_node *new);
-void		lst_delone(t_node *node, void (*del)(void*));
+t_list			*lst_new(void *content);
+t_lst_node		*lst_node_new(void *content);
+t_lst_node		*lst_first(t_list *lst);
+t_lst_node		*lst_last(t_list *lst);
+void		lst_add_front(t_list *lst, t_lst_node *new);
+void		lst_add_back(t_list *lst, t_lst_node *new);
+void		lst_delone(t_lst_node *node, void (*del)(void*));
 void		lst_remove_first(t_list *lst, void (*del)(void*));
-void		lst_remove_after(t_list *lst, t_node *node, void (*del)(void*));
+void		lst_remove_after(t_list *lst, t_lst_node *node, void (*del)(void*));
 void		lst_remove_if(t_list *lst, void *data_ref,
 	bool (*cmp)(void*, void*), void (*del)(void*));
 void		lst_clear(t_list *lst, void (*del)(void*));
 void		lst_iter(t_list *lst, void (*f)(void *));
 t_list		*lst_map(t_list *lst, void *(*f)(void *), void (*del)(void *));
-void		*node_get(t_node *node);
-void		node_set(t_node *node, void *content);
-t_node		*node_next(t_node *node);
-t_node		*node_at(t_list *lst, size_t index);
+void		*lst_node_get(t_lst_node *node);
+void		lst_node_set(t_lst_node *node, void *content);
+t_lst_node		*lst_node_next(t_lst_node *node);
+t_lst_node		*lst_node_at(t_list *lst, size_t index);
 
-//   VECTOR
+// VECTOR
 
 typedef struct s_vector vector;
 vector		*vector_create(size_t capacity, size_t element_size);
@@ -74,7 +74,7 @@ void		vector_set(vector *vect, size_t index, void *element);
 bool		vector_push(vector *vect, void *element);
 void		vector_delete(vector *vect, void (*del)(void *));
 
-//   STACK
+// STACK
 
 typedef struct s_stack stack;
 stack		*stack_create(size_t capacity, size_t element_size);
@@ -84,7 +84,7 @@ void		*stack_top(stack *stk);
 void		*stack_pop(stack *stk);
 void		stack_delete(stack *stk, void (*del)(void *));
 
-//   QUEUE
+// QUEUE
 
 typedef struct s_queue queue;
 queue		*queue_create(size_t capacity, size_t element_size);
@@ -95,7 +95,8 @@ void 		*queue_peek(queue *q);
 void		*queue_dequeue(queue *q);
 void		queue_delete(queue *q, void (*del)(void *));
 
-//   HASH TABLE
+// HASH TABLE
+
 typedef struct s_hashtbl hashtbl;
 #define INITIAL_BUCKET_COUNT 16
 #define HASHTBL_LOAD_FACTOR_LIMIT 0.75f
@@ -114,11 +115,39 @@ void				*hashtbl_get(hashtbl *h, char *key);
 void				hashtbl_remove(hashtbl *h, char *key);
 void				hashtbl_delete(hashtbl *h);
 
+// BINARY TREE
+
+typedef struct s_bin_tree bin_tree;
+
+bin_tree	*bin_tree_create(bin_tree *left, void *content, bin_tree *right);
+void		bin_tree_delete(bin_tree *tree, void (*del)(void *));
+bin_tree	*bin_tree_perfect_create(size_t height, void (*del)(void *));
+size_t		bin_tree_size(bin_tree *tree);
+void		bin_tree_traverse_preorder(bin_tree *tree, void (*f)(void *));
+void		bin_tree_traverse_inorder(bin_tree *tree, void (*f)(void *));
+void		bin_tree_traverse_postorder(bin_tree *tree, void (*f)(void *));
+
+// BINARY SEARCH TREE
+
+typedef struct s_bst bst;
+//key_cmp must return:
+//a negative value if first_key is less than second_key
+//a positive value if first_key is greater than second_key
+//0 if both keys are equal.
+//Only the sign of the return value is considered; the exact magnitude does not matter.
+bst		*bst_create(void *key, void *value,
+			int (*key_cmp)(void *first_key, void *second_key));
+size_t	bst_size(bst *tree);
+void	*bst_min(bst *tree);
+void	*bst_search(bst *tree, void *key);
+bool	bst_insert(bst *tree, void *key, void *value);
+bool	bst_remove(bst *tree, void *key, void (*del)(void *));
+bool 	bst_delete(bst *tree, void (*del)(void *));
 
 //FILES_MANAGING
 
-ssize_t			ft_putchar_fd(char c, int fd);
-ssize_t			ft_putstr_fd(char *s, int fd);
+ssize_t		ft_putchar_fd(char c, int fd);
+ssize_t		ft_putstr_fd(char *s, int fd);
 ssize_t		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
 int			ft_printf(const char *format, ...);

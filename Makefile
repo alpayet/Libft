@@ -14,11 +14,11 @@ SRC_FILES = \
 	data_structures/chained_list/lst_remove_after.c \
 	data_structures/chained_list/lst_remove_first.c \
 	data_structures/chained_list/lst_remove_if.c \
-	data_structures/chained_list/node_at.c \
-	data_structures/chained_list/node_get.c \
-	data_structures/chained_list/node_new.c \
-	data_structures/chained_list/node_next.c \
-	data_structures/chained_list/node_set.c \
+	data_structures/chained_list/lst_node_at.c \
+	data_structures/chained_list/lst_node_get.c \
+	data_structures/chained_list/lst_node_new.c \
+	data_structures/chained_list/lst_node_next.c \
+	data_structures/chained_list/lst_node_set.c \
 	data_structures/hash_table/hash_function.c \
 	data_structures/hash_table/hash_utils.c \
 	data_structures/hash_table/hashtbl_bucket_prepend.c \

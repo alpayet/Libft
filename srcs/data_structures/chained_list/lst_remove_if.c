@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 03:24:02 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/24 04:25:28 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:37:35 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	lst_remove_if(t_list *lst, void *data_ref,
 	bool (*cmp)(void*, void*), void (*del)(void*))
 {
-	t_node	*prev;
-	t_node	*curr;
+	t_lst_node	*prev;
+	t_lst_node	*curr;
 
 	if (lst == NULL || cmp == NULL)
 		return ;

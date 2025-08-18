@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_iter.c                                         :+:      :+:    :+:   */
+/*   bst_size.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 04:29:56 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/15 16:37:35 by alpayet          ###   ########.fr       */
+/*   Created: 2025/08/15 23:59:40 by alpayet           #+#    #+#             */
+/*   Updated: 2025/08/16 00:08:19 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void	lst_iter(t_list *lst, void (*f)(void *))
-{
-	t_lst_node	*node;
+static size_t	bst_size_recursive(bst_node *root);
 
-	if (lst == NULL || f == NULL)
-		return ;
-	node = lst->first;
-	while (node != NULL)
-	{
-		f(node->content);
-		node = node->next;
-	}
+size_t	bst_size(bst *tree)
+{
+	if (tree == NULL)
+		return (0);
+	return (bst_size_recursive(tree->root));
+}
+
+static size_t	bst_size_recursive(bst_node *root)
+{
+	if (root == NULL)
+		return (0);
+	return (bst_size_recursive(root->left) + bst_size_recursive(root->right) + 1);
 }

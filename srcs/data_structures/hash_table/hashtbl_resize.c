@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 01:01:08 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/24 07:00:43 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:38:38 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static bool	insert_in_new_vect(vector *new_vector, entry *node_entry)
 static bool	reinsert_hashtbl_elements(vector *old_vector, vector *new_vector)
 {
 	t_list	*old_bucket;
-	t_node	*node;
+	t_lst_node	*node;
 	entry	*node_entry;
 	size_t	i;
 
@@ -51,7 +51,7 @@ static bool	reinsert_hashtbl_elements(vector *old_vector, vector *new_vector)
 					if (insert_in_new_vect(new_vector, node_entry) == false)
 						return (false);
 				}
-				node = node_next(node);
+				node = lst_node_next(node);
 			}
 		}
 		i++;
