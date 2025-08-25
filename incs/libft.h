@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:53:27 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/17 01:40:22 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/08/25 00:07:33 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,12 @@ void 		*queue_peek(queue *q);
 void		*queue_dequeue(queue *q);
 void		queue_delete(queue *q, void (*del)(void *));
 
+//key_cmp must return:
+//a negative value if first_key is less than second_key
+//a positive value if first_key is greater than second_key
+//0 if both keys are equal.
+//Only the sign of the return value is considered; the exact magnitude does not matter.
+
 // HASH TABLE
 
 typedef struct s_hashtbl hashtbl;
@@ -108,11 +114,11 @@ typedef enum e_hashtbl_status
 	HASHTBL_ERR_ALLOC
 }	t_hashtbl_status;
 
-hashtbl				*hashtbl_create(size_t capacity);
-t_hashtbl_status	hashtbl_put(hashtbl *h, char *key, void *value);
-bool				hashtbl_contains(hashtbl *h, char *key);
-void				*hashtbl_get(hashtbl *h, char *key);
-void				hashtbl_remove(hashtbl *h, char *key);
+hashtbl				*hashtbl_create(size_t capacity, int (*key_cmp)(void *first_key, void *second_key));
+t_hashtbl_status	hashtbl_put(hashtbl *h, void *key, void *value);
+bool				hashtbl_contains(hashtbl *h, void *key);
+void				*hashtbl_get(hashtbl *h, void *key);
+void				hashtbl_remove(hashtbl *h, void *key);
 void				hashtbl_delete(hashtbl *h);
 
 // BINARY TREE
@@ -130,11 +136,6 @@ void		bin_tree_traverse_postorder(bin_tree *tree, void (*f)(void *));
 // BINARY SEARCH TREE
 
 typedef struct s_bst bst;
-//key_cmp must return:
-//a negative value if first_key is less than second_key
-//a positive value if first_key is greater than second_key
-//0 if both keys are equal.
-//Only the sign of the return value is considered; the exact magnitude does not matter.
 bst		*bst_create(void *key, void *value,
 			int (*key_cmp)(void *first_key, void *second_key));
 size_t	bst_size(bst *tree);
@@ -143,6 +144,16 @@ void	*bst_search(bst *tree, void *key);
 bool	bst_insert(bst *tree, void *key, void *value);
 bool	bst_remove(bst *tree, void *key, void (*del)(void *));
 bool 	bst_delete(bst *tree, void (*del)(void *));
+
+// HEAP
+
+typedef struct s_heap heap;
+heap	*heap_create(size_t capacity, int (*key_cmp)(void *first_key, void *second_key));
+bool	heap_insert(heap *heap, void *key, void *value);
+void	*heap_extract_priority(heap *heap);
+void	*heap_peek(heap *heap);
+void	heap_delete(heap *heap, void (*del)(void *));
+
 
 //FILES_MANAGING
 

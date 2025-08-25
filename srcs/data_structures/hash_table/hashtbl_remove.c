@@ -6,15 +6,15 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 04:09:08 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/15 16:38:38 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/08/24 22:34:15 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
-t_list	*hashtbl_bucket(hashtbl *h, char *key);
-void	hashtbl_change_bucket(vector *vect, t_list **new_bucket_ptr, char *key);
+t_list	*hashtbl_bucket(hashtbl *h, void *key);
+void	hashtbl_change_bucket(vector *vect, t_list **new_bucket_ptr, void *key);
 
-void	hashtbl_remove(hashtbl *h, char *key)
+void	hashtbl_remove(hashtbl *h, void *key)
 {
 	t_list	*bucket;
 	t_lst_node	*prev;
@@ -28,7 +28,7 @@ void	hashtbl_remove(hashtbl *h, char *key)
 	while (curr != NULL)
 	{
 		if (curr->content != NULL
-			&& ft_strcmp(key, ((entry *)(curr->content))->key) == 0)
+			&& h->key_cmp(key, ((entry *)(curr->content))->key) == 0)
 		{
 			if (prev == NULL)
 				lst_remove_first(bucket, free);

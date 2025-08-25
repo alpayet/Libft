@@ -6,15 +6,15 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 04:18:37 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/15 16:37:57 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/08/24 22:36:06 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
-t_list	*hashtbl_bucket(hashtbl *h, char *key);
-void	hashtbl_change_bucket(vector *vect, t_list **new_bucket_ptr, char *key);
+t_list	*hashtbl_bucket(hashtbl *h, void *key);
+void	hashtbl_change_bucket(vector *vect, t_list **new_bucket_ptr, void *key);
 
-static entry *new_entry(char *key, void *value)
+static entry *new_entry(void *key, void *value)
 {
 	entry	*new_entry;
 
@@ -26,7 +26,7 @@ static entry *new_entry(char *key, void *value)
 	return(new_entry);
 }
 
-t_hashtbl_status hashtbl_bucket_prepend(vector *vect, t_list *bucket, char *key, void *value)
+t_hashtbl_status hashtbl_bucket_prepend(vector *vect, t_list *bucket, void *key, void *value)
 {
 	entry	*entry;
 	t_lst_node	*new_node;

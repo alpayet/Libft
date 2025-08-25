@@ -6,14 +6,14 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 01:01:08 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/15 16:38:38 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/08/24 22:37:53 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
-size_t hash(char *key);
+size_t hash(void *key);
 t_hashtbl_status hashtbl_bucket_prepend(vector *vect, t_list *bucket,
-	char *key, void *value);
+	void *key, void *value);
 void bucket_clear(void *bucket);
 
 static bool	insert_in_new_vect(vector *new_vector, entry *node_entry)

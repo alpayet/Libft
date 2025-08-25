@@ -6,22 +6,22 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 00:31:29 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/15 16:38:38 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/08/24 22:34:26 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-size_t	hash(char *key);
+size_t	hash(void *key);
 
-size_t	index_in_hashtbl(vector *vect, char *key)
+size_t	index_in_hashtbl(vector *vect, void *key)
 {
 	if (vect->capacity == 0)
 		return (SIZE_MAX);
 	return (hash(key) % vect->capacity);
 }
 
-t_list	*hashtbl_bucket(hashtbl *h, char *key)
+t_list	*hashtbl_bucket(hashtbl *h, void *key)
 {
 	size_t	index_in_table;
 	t_list	**bucket_ptr;
@@ -37,7 +37,7 @@ t_list	*hashtbl_bucket(hashtbl *h, char *key)
 	return (*bucket_ptr);
 }
 
-entry	*hashtbl_find_entry(t_list *bucket, char *key)
+entry	*hashtbl_find_entry(t_list *bucket, void *key, int (*key_cmp)(void *first_key, void *second_key))
 {
 	t_lst_node	*node;
 	entry	*node_entry;
@@ -50,7 +50,7 @@ entry	*hashtbl_find_entry(t_list *bucket, char *key)
 		node_entry = (entry *)(node->content);
 		if (node_entry != NULL)
 		{
-			if (ft_strcmp(key, node_entry->key) == 0)
+			if (key_cmp(key, node_entry->key) == 0)
 				return (node_entry);
 		}
 		node = lst_node_next(node);
@@ -59,7 +59,7 @@ entry	*hashtbl_find_entry(t_list *bucket, char *key)
 }
 
 void	hashtbl_change_bucket(vector *vect,
-	t_list **new_bucket_ptr, char *key)
+	t_list **new_bucket_ptr, void *key)
 {
 	size_t	index_in_table;
 

@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hashtbl_create.c                                   :+:      :+:    :+:   */
+/*   heap_create.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/17 22:24:16 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/24 22:28:58 by alpayet          ###   ########.fr       */
+/*   Created: 2025/08/24 22:09:36 by alpayet           #+#    #+#             */
+/*   Updated: 2025/08/24 23:28:47 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-hashtbl	*hashtbl_create(size_t capacity, int (*key_cmp)(void *first_key, void *second_key))
+heap	*heap_create(size_t capacity, int (*key_cmp)(void *first_key, void *second_key))
 {
-	hashtbl	*h;
+	heap	*heap;
 
-	h = malloc(sizeof(hashtbl));
-	if (h == NULL)
+	heap = malloc(sizeof(*heap));
+	if (heap == NULL)
 		return (NULL);
-	if (capacity == 0)
-		capacity = INITIAL_BUCKET_COUNT;
-	h->vect = vector_create(capacity, sizeof(t_list *));
-	h->key_cmp = key_cmp;
-	if (h->vect == NULL)
+	heap->vect = vector_create(capacity, sizeof(entry));
+	if (heap->vect == NULL)
 	{
-		free(h);
+		free(heap);
 		return (NULL);
 	}
-	h->vect->size = capacity;
-	h->count = 0;
-	return (h);
+	heap->key_cmp = key_cmp;
+	return (heap);
 }

@@ -103,7 +103,7 @@ SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 DEP = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.d))
 
-NAME = libft
+NAME = libft.a
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror

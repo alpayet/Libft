@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/08 18:06:58 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/17 01:40:40 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/08/24 23:24:09 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,15 @@ typedef struct s_queue
 
 typedef struct s_entry
 {
-	char *key;
+	void *key;
 	void *value;
 } entry;
 
 typedef struct s_hashtbl
 {
-	vector *vect;
-	size_t count; //total number of inserted elements
+	vector	*vect;
+	size_t	count; //total number of inserted elements
+	int		(*key_cmp)(void *, void *);
 }	t_hashtbl;
 
 typedef struct s_bin_tree
@@ -81,5 +82,11 @@ typedef struct s_bst
 	bst_node	*root;
 	int			(*key_cmp)(void *, void *);
 }	bst;
+
+typedef struct s_heap
+{
+	vector	*vect;
+	int			(*key_cmp)(void *, void *);
+}	heap;
 
 #endif
