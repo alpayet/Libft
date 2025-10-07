@@ -94,9 +94,9 @@ SRC_FILES = \
 	files_managing/printf/printf_fd.c
 
 #directories
-SRC_DIR = srcs
-OBJ_DIR = objs
-INC_DIR = incs
+SRC_DIR = src
+OBJ_DIR = obj
+INC_DIR = inc
 
 #files full paths
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
