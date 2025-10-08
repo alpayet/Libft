@@ -6,15 +6,15 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 23:47:57 by alpayet           #+#    #+#             */
-/*   Updated: 2025/03/22 00:22:28 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:55:28 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_realloc(void *ptr, size_t old_size, size_t new_size)
+void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)
 {
-	void *new_ptr;
+	void	*new_ptr;
 
 	if (new_size == 0)
 	{

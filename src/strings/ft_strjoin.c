@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:49:43 by alpayet           #+#    #+#             */
-/*   Updated: 2024/11/22 01:05:42 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:55:18 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char			*s1_s2_conc;
-	size_t		size_s1_s2_conc;
+	char	*s1_s2_conc;
+	size_t	size_s1_s2_conc;
 
 	size_s1_s2_conc = ft_strlen(s1) + ft_strlen(s2) + 1;
 	s1_s2_conc = malloc(sizeof(char) * size_s1_s2_conc);

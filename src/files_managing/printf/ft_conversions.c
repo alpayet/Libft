@@ -6,11 +6,12 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 21:11:58 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/08 17:20:12 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:56:20 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 int	ft_putnbr_base_ul(unsigned long nbr, char *base);
 
 int	ft_conversions_s(va_list args)

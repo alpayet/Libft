@@ -6,13 +6,13 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 16:26:36 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/14 16:42:58 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 02:02:43 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void	bin_tree_delete(bin_tree *tree, void (*del)(void *))
+void	bin_tree_delete(t_bin_tree *tree, void (*del)(void *))
 {
 	if (tree == NULL)
 		return ;

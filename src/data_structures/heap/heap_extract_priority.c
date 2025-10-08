@@ -6,20 +6,21 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 00:26:46 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/25 03:20:47 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 02:01:51 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-static void		move_down(heap *heap, size_t parent_index);
-static size_t	get_priority_child_index(heap *heap, size_t parent_index);
-static void		swap_with_child(heap *heap, size_t parent_index, size_t child_index);
+static void		move_down(t_heap *heap, size_t parent_index);
+static size_t	get_priority_child_index(t_heap *heap, size_t parent_index);
+static void		swap_with_child(t_heap *heap, size_t parent_index,
+					size_t child_index);
 
-void	*heap_extract_priority(heap *heap)
+void	*heap_extract_priority(t_heap *heap)
 {
-	entry	*root_entry;
-	entry	*last_node_entry;
+	t_entry	*root_entry;
+	t_entry	*last_node_entry;
 
 	root_entry = vector_get(heap->vect, 0);
 	last_node_entry = vector_get(heap->vect, heap->vect->size - 1);
@@ -29,11 +30,11 @@ void	*heap_extract_priority(heap *heap)
 	return (root_entry->value);
 }
 
-static void	move_down(heap *heap, size_t parent_index)
+static void	move_down(t_heap *heap, size_t parent_index)
 {
 	size_t	priority_child_index;
-	entry	*priority_child_entry;
-	entry	*parent_entry;
+	t_entry	*priority_child_entry;
+	t_entry	*parent_entry;
 
 	while (2 * parent_index + 1 < heap->vect->size)
 	{
@@ -50,11 +51,11 @@ static void	move_down(heap *heap, size_t parent_index)
 	}
 }
 
-static size_t	get_priority_child_index(heap *heap, size_t parent_index)
+static size_t	get_priority_child_index(t_heap *heap, size_t parent_index)
 {
 	size_t	priority_child_index;
-	entry	*first_child_entry;
-	entry	*second_child_entry;
+	t_entry	*first_child_entry;
+	t_entry	*second_child_entry;
 
 	priority_child_index = 2 * parent_index + 1;
 	first_child_entry = vector_get(heap->vect, priority_child_index);
@@ -62,16 +63,17 @@ static size_t	get_priority_child_index(heap *heap, size_t parent_index)
 		second_child_entry = vector_get(heap->vect, priority_child_index + 1);
 	else
 		second_child_entry = NULL;
-	if (second_child_entry != NULL &&
-		heap->key_cmp(first_child_entry->key, second_child_entry->key) < 0)
+	if (second_child_entry != NULL && heap->key_cmp(first_child_entry->key,
+			second_child_entry->key) < 0)
 		priority_child_index++;
 	return (priority_child_index);
 }
 
-static void	swap_with_child(heap *heap, size_t parent_index, size_t child_index)
+static void	swap_with_child(t_heap *heap, size_t parent_index,
+		size_t child_index)
 {
-	entry	*child_entry;
-	entry	*parent_entry_temp;
+	t_entry	*child_entry;
+	t_entry	*parent_entry_temp;
 
 	parent_entry_temp = vector_get(heap->vect, parent_index);
 	child_entry = vector_get(heap->vect, child_index);

@@ -6,13 +6,13 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 20:46:51 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/23 02:57:46 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:52:28 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void vector_delete(vector *vect, void (*del)(void *))
+void	vector_delete(t_vector *vect, void (*del)(void *))
 {
 	size_t	i;
 	void	*elem_ptr;

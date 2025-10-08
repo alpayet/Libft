@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bst_get.c                                          :+:      :+:    :+:   */
+/*   bst_search.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 15:54:35 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/17 00:11:15 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:54:15 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void	*bst_search(bst *tree, void *key)
+void	*bst_search(t_bst *tree, void *key)
 {
-	bst_node	*temp;
+	t_bst_node	*temp;
 
 	if (tree == NULL || key == NULL)
 		return (NULL);
@@ -31,9 +31,9 @@ void	*bst_search(bst *tree, void *key)
 	return (NULL);
 }
 
-bst_node	*bst_get_node(bst *tree, void *key)
+t_bst_node	*bst_get_node(t_bst *tree, void *key)
 {
-	bst_node	*temp;
+	t_bst_node	*temp;
 
 	if (tree == NULL || key == NULL)
 		return (NULL);

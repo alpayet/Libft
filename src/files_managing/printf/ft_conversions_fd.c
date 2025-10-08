@@ -6,11 +6,12 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 21:11:58 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/22 20:49:37 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:56:01 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 int	ft_putnbr_base_ul_fd(unsigned long nbr, char *base, int fd);
 
 int	ft_conversions_s_fd(va_list args, int fd)
@@ -64,5 +65,6 @@ int	ft_conversions_p_fd(va_list args, int fd)
 		return (ft_putstr_fd("(nil)", fd));
 	if (ft_putstr_fd("0x", fd) == -1)
 		return (-1);
-	return (ft_putnbr_base_ul_fd((unsigned long)addr, "0123456789abcdef", fd) + 2);
+	return (ft_putnbr_base_ul_fd((unsigned long)addr, "0123456789abcdef", fd)
+		+ 2);
 }

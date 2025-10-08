@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 19:37:35 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/08 16:59:12 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:55:24 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ char	*ft_strcpy(char *dst, const char *src)
 		dst[i] = src[i];
 		i++;
 	}
-    dst[i] = '\0';
+	dst[i] = '\0';
 	return (dst);
 }

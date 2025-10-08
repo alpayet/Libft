@@ -6,13 +6,13 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 22:14:26 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/16 00:24:22 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:57:27 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void *stack_pop(stack *stk)
+void	*stack_pop(t_stack *stk)
 {
 	void	*top;
 

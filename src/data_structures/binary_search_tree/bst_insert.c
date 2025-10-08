@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bst_put.c                                          :+:      :+:    :+:   */
+/*   bst_insert.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 16:57:44 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/17 00:11:41 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:49:48 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-static bool	bst_insert_child(bst_node **node, void *key, void *value);
-bst_node	*bst_node_create(void *key, void *value);
-static bool	change_node_value(bst_node *node, void *value);
+static bool	bst_insert_child(t_bst_node **node, void *key, void *value);
+t_bst_node	*bst_node_create(void *key, void *value);
+static bool	change_node_value(t_bst_node *node, void *value);
 
-bool	bst_insert(bst *tree, void *key, void *value)
+bool	bst_insert(t_bst *tree, void *key, void *value)
 {
-	bst_node	*temp;
+	t_bst_node	*temp;
 
 	if (tree == NULL || key == NULL)
 		return (false);
@@ -43,15 +43,14 @@ bool	bst_insert(bst *tree, void *key, void *value)
 	return (false);
 }
 
-static bool	bst_insert_child(bst_node **node, void *key, void *value)
+static bool	bst_insert_child(t_bst_node **node, void *key, void *value)
 {
 	*node = bst_node_create(key, value);
 	return (*node != NULL);
 }
 
-static bool	change_node_value(bst_node *node, void *value)
+static bool	change_node_value(t_bst_node *node, void *value)
 {
 	node->value = value;
 	return (true);
 }
-

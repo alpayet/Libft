@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 22:55:11 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/11 21:56:13 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:55:39 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*a;
+
 	if (nmemb == 0 || size == 0)
 		return (malloc(0));
 	if (nmemb > (SIZE_MAX / size))

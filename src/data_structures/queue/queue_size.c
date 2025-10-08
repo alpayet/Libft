@@ -6,13 +6,13 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 22:12:04 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/15 23:56:35 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:59:19 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-size_t queue_size(queue *q)
+size_t	queue_size(t_queue *q)
 {
 	if (q == NULL)
 		return (0);

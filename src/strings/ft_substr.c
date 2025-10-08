@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 19:59:32 by alpayet           #+#    #+#             */
-/*   Updated: 2024/11/22 02:43:34 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:55:09 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	s_copy = malloc((i + 1) * sizeof(char));
 	if (s_copy == NULL)
 		return (NULL);
-	ft_strlcpy(s_copy, s + start, i + 1);	
+	ft_strlcpy(s_copy, s + start, i + 1);
 	return (s_copy);
 }
 

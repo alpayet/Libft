@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:56:27 by alpayet           #+#    #+#             */
-/*   Updated: 2024/11/22 02:19:36 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:55:36 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t		i;
+	size_t				i;
 	const unsigned char	*s1_char;
 	const unsigned char	*s2_char;
 

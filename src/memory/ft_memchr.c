@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:57:56 by alpayet           #+#    #+#             */
-/*   Updated: 2024/11/22 02:18:24 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:55:49 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	const unsigned char	*s_char;
-	size_t		i;
+	size_t				i;
 
 	c = (unsigned char)c;
 	s_char = s;

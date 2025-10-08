@@ -6,17 +6,17 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 14:29:55 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/11 21:55:07 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:52:29 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-vector *vector_create(size_t capacity, size_t element_size)
+t_vector	*vector_create(size_t capacity, size_t element_size)
 {
-	vector	*vect;
+	t_vector	*vect;
 
-	vect = malloc(sizeof(vector));
+	vect = malloc(sizeof(t_vector));
 	if (vect == NULL)
 		return (NULL);
 	vect->capacity = capacity;

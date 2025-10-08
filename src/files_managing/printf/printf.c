@@ -6,16 +6,17 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 21:05:06 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/05 15:50:25 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:55:57 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-int	ft_conversions_s(va_list args);
-int	ft_conversions_d_or_i(va_list args);
-int	ft_conversions_u(va_list args);
-int	ft_conversions_x_or_upperx(char format_char, va_list args);
-int	ft_conversions_p(va_list args);
+
+int			ft_conversions_s(va_list args);
+int			ft_conversions_d_or_i(va_list args);
+int			ft_conversions_u(va_list args);
+int			ft_conversions_x_or_upperx(char format_char, va_list args);
+int			ft_conversions_p(va_list args);
 
 int	ft_putnbr_base_ul(unsigned long nbr, char *base)
 {
@@ -101,31 +102,31 @@ int	ft_printf(const char *format, ...)
 
 /* int    main(void)
 {
-    int        i;
-    char    *s;
-    void    *ptr;
+	int        i;
+	char    *s;
+	void    *ptr;
 
-    i = -1;
-    s = "prout";
-    ptr = NULL;
+	i = -1;
+	s = "prout";
+	ptr = NULL;
 
-  	printf("%d", ft_printf(0));
-     	printf("int : %d\n\n", ft_printf("my oui p%a oui\n%"));
-      printf("int : %d\n\n", printf("42 oui p%a oui\n%"));
-    	printf("int : %d\n\n", ft_printf("my oui s%%%s oui\n", s));
-     	printf("int : %d\n\n", printf("42 oui s%%%s oui\n", s));
-     	printf("int : %d\n\n", ft_printf("my oui u :%%%u oui\n", i));
+	printf("%d", ft_printf(0));
+		printf("int : %d\n\n", ft_printf("my oui p%a oui\n%"));
+		printf("int : %d\n\n", printf("42 oui p%a oui\n%"));
+		printf("int : %d\n\n", ft_printf("my oui s%%%s oui\n", s));
+		printf("int : %d\n\n", printf("42 oui s%%%s oui\n", s));
+		printf("int : %d\n\n", ft_printf("my oui u :%%%u oui\n", i));
 	printf("int : %d\n\n", printf("42 oui u :%%%u oui\n", i));
-    	printf("int : %d\n\n", ft_printf("my oui d%%%d oui\n", i));
-    	printf("int : %d\n\n", printf("42 oui d%%%d oui\n", i));
-     	printf("int : %d\n\n", ft_printf("my oui d%%%d oui\n", i));
-     	printf("int : %d\n\n", printf("42 oui i%%%i oui\n", i));
-     	printf("int : %d\n\n", ft_printf("my oui x%%%x oui\n", i));
-     	printf("int : %d\n\n", printf("42 oui x%%%x oui\n", i));
-     	printf("int : %d\n\n", ft_printf("my oui X%%%X oui\n", i));
-     	printf("int : %d\n\n", printf("42 oui X%%%X oui\n", i));
-     	printf("int : %d\n\n", ft_printf("my oui %x oui\n", 35));
+		printf("int : %d\n\n", ft_printf("my oui d%%%d oui\n", i));
+		printf("int : %d\n\n", printf("42 oui d%%%d oui\n", i));
+		printf("int : %d\n\n", ft_printf("my oui d%%%d oui\n", i));
+		printf("int : %d\n\n", printf("42 oui i%%%i oui\n", i));
+		printf("int : %d\n\n", ft_printf("my oui x%%%x oui\n", i));
+		printf("int : %d\n\n", printf("42 oui x%%%x oui\n", i));
+		printf("int : %d\n\n", ft_printf("my oui X%%%X oui\n", i));
+		printf("int : %d\n\n", printf("42 oui X%%%X oui\n", i));
+		printf("int : %d\n\n", ft_printf("my oui %x oui\n", 35));
 	printf("int : %d\n\n", printf("42 oui %x oui\n", 35));
-     	printf("int : %d\n\n", ft_printf("my oui a : % \n", 35));
-     	printf("int : %d\n\n", printf("42 oui a : % \n", 35));
+		printf("int : %d\n\n", ft_printf("my oui a : % \n", 35));
+		printf("int : %d\n\n", printf("42 oui a : % \n", 35));
 } */

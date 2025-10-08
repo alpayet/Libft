@@ -6,13 +6,13 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 20:46:56 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/23 00:10:17 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:52:25 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void vector_set(vector *vect, size_t index, void *element)
+void	vector_set(t_vector *vect, size_t index, void *element)
 {
 	char	*entry_ptr;
 

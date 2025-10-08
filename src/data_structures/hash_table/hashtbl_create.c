@@ -6,17 +6,18 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 22:24:16 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/24 22:28:58 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:52:51 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-hashtbl	*hashtbl_create(size_t capacity, int (*key_cmp)(void *first_key, void *second_key))
+t_hashtbl	*hashtbl_create(size_t capacity, int (*key_cmp)(void *first_key,
+			void *second_key))
 {
-	hashtbl	*h;
+	t_hashtbl	*h;
 
-	h = malloc(sizeof(hashtbl));
+	h = malloc(sizeof(t_hashtbl));
 	if (h == NULL)
 		return (NULL);
 	if (capacity == 0)

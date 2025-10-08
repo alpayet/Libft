@@ -6,13 +6,13 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 22:26:14 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/16 00:26:30 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:56:56 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void *stack_top(stack *stk)
+void	*stack_top(t_stack *stk)
 {
 	if (stk == NULL || stk->vect == NULL || stk->vect->size == 0)
 		return (NULL);

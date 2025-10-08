@@ -6,13 +6,13 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 13:08:08 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/16 00:00:11 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:56:49 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-bool vector_push(vector *vect, void *element)
+bool	vector_push(t_vector *vect, void *element)
 {
 	size_t	vect_size;
 

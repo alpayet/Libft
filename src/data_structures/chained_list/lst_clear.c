@@ -6,13 +6,13 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 03:33:24 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/15 16:37:35 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 02:02:58 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-void	lst_clear(t_list *lst, void (*del)(void*))
+void	lst_clear(t_list *lst, void (*del)(void *))
 {
 	t_lst_node	*new_first;
 

@@ -6,29 +6,29 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 23:30:29 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/25 02:07:46 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 02:01:28 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-static void	move_up(heap *heap, size_t child_index);
+static void	move_up(t_heap *heap, size_t child_index);
 
-bool	heap_insert(heap *heap, void *key, void *value)
+bool	heap_insert(t_heap *heap, void *key, void *value)
 {
 	if (heap == NULL || heap->vect == NULL)
 		return (false);
-	vector_push(heap->vect, &(entry){key, value});
+	vector_push(heap->vect, &(t_entry){key, value});
 	move_up(heap, heap->vect->size - 1);
 	return (true);
 }
 
-static void	move_up(heap *heap, size_t child_index)
+static void	move_up(t_heap *heap, size_t child_index)
 {
-	entry	*child_entry;
+	t_entry	*child_entry;
 	size_t	parent_index;
-	entry	*parent_entry;
-	entry	*parent_entry_temp;
+	t_entry	*parent_entry;
+	t_entry	*parent_entry_temp;
 
 	while (child_index > 0)
 	{

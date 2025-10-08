@@ -6,18 +6,18 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 15:50:03 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/15 18:50:11 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:51:51 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-bst_node	*bst_node_create(void *key, void *value);
+t_bst_node	*bst_node_create(void *key, void *value);
 
-bst	*bst_create(void *key, void *value,
-				int (*key_cmp)(void *first_key, void *second_key))
+t_bst	*bst_create(void *key, void *value, int (*key_cmp)(void *first_key,
+			void *second_key))
 {
-	bst	*tree;
+	t_bst	*tree;
 
 	if (key == NULL || key_cmp == NULL)
 		return (NULL);
@@ -34,9 +34,9 @@ bst	*bst_create(void *key, void *value,
 	return (tree);
 }
 
-bst_node	*bst_node_create(void *key, void *value)
+t_bst_node	*bst_node_create(void *key, void *value)
 {
-	bst_node	*node;
+	t_bst_node	*node;
 
 	if (key == NULL)
 		return (NULL);

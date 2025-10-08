@@ -6,17 +6,17 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 13:17:54 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/11 21:48:53 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 02:00:06 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-stack *stack_create(size_t capacity, size_t element_size)
+t_stack	*stack_create(size_t capacity, size_t element_size)
 {
-	stack	*stk;
+	t_stack	*stk;
 
-	stk = malloc(sizeof(stack));
+	stk = malloc(sizeof(t_stack));
 	if (stk == NULL)
 		return (NULL);
 	stk->vect = vector_create(capacity, element_size);

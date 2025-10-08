@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 00:31:29 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/24 22:34:26 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:48:36 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 size_t	hash(void *key);
 
-size_t	index_in_hashtbl(vector *vect, void *key)
+size_t	index_in_hashtbl(t_vector *vect, void *key)
 {
 	if (vect->capacity == 0)
 		return (SIZE_MAX);
 	return (hash(key) % vect->capacity);
 }
 
-t_list	*hashtbl_bucket(hashtbl *h, void *key)
+t_list	*hashtbl_bucket(t_hashtbl *h, void *key)
 {
 	size_t	index_in_table;
 	t_list	**bucket_ptr;
@@ -37,17 +37,18 @@ t_list	*hashtbl_bucket(hashtbl *h, void *key)
 	return (*bucket_ptr);
 }
 
-entry	*hashtbl_find_entry(t_list *bucket, void *key, int (*key_cmp)(void *first_key, void *second_key))
+t_entry	*hashtbl_find_entry(t_list *bucket, void *key,
+		int (*key_cmp)(void *first_key, void *second_key))
 {
 	t_lst_node	*node;
-	entry	*node_entry;
+	t_entry		*node_entry;
 
 	if (bucket == NULL || key == NULL)
 		return (NULL);
 	node = bucket->first;
 	while (node != NULL)
 	{
-		node_entry = (entry *)(node->content);
+		node_entry = (t_entry *)(node->content);
 		if (node_entry != NULL)
 		{
 			if (key_cmp(key, node_entry->key) == 0)
@@ -58,8 +59,8 @@ entry	*hashtbl_find_entry(t_list *bucket, void *key, int (*key_cmp)(void *first_
 	return (NULL);
 }
 
-void	hashtbl_change_bucket(vector *vect,
-	t_list **new_bucket_ptr, void *key)
+void	hashtbl_change_bucket(t_vector *vect, t_list **new_bucket_ptr,
+		void *key)
 {
 	size_t	index_in_table;
 

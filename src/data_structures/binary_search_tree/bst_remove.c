@@ -6,26 +6,26 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 19:29:19 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/17 00:11:15 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:49:48 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-bst_node	*bst_get_node(bst *tree, void *key);
-static void	bst_remove_min(bst *tree, void (*del)(void *));
-void		bst_delete_node(bst_node *node, void (*del)(void *));
+t_bst_node	*bst_get_node(t_bst *tree, void *key);
+static void	bst_remove_min(t_bst *tree, void (*del)(void *));
+void		bst_delete_node(t_bst_node *node, void (*del)(void *));
 
-void	bst_remove(bst *tree, void *key, void (*del)(void *))
+void	bst_remove(t_bst *tree, void *key, void (*del)(void *))
 {
-	bst_node	*target;
-	bst			*target_right_tree;
+	t_bst_node	*target;
+	t_bst		*target_right_tree;
 	void		*successor_target_key;
 
 	if (tree == NULL || key == NULL)
 		return ;
 	target = bst_get_node(tree, key);
-	target_right_tree = &(bst){target->right, tree->key_cmp};
+	target_right_tree = &(t_bst){target->right, tree->key_cmp};
 	successor_target_key = bst_min(target_right_tree);
 	target->key = successor_target_key;
 	target->value = bst_search(target_right_tree, successor_target_key);
@@ -33,10 +33,10 @@ void	bst_remove(bst *tree, void *key, void (*del)(void *))
 	target->right = target_right_tree->root;
 }
 
-static void	bst_remove_min(bst *tree, void (*del)(void *))
+static void	bst_remove_min(t_bst *tree, void (*del)(void *))
 {
-	bst_node	*parent;
-	bst_node	*min;
+	t_bst_node	*parent;
+	t_bst_node	*min;
 
 	if (tree == NULL || tree->root == NULL)
 		return ;
@@ -53,5 +53,3 @@ static void	bst_remove_min(bst *tree, void (*del)(void *))
 		parent->left = min->right;
 	bst_delete_node(min, del);
 }
-
-

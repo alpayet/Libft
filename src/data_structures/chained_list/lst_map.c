@@ -6,7 +6,7 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:57:03 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/15 16:37:57 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:53:09 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_list	*lst_map(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_lst_node	*node;
-	t_list	*lst_f;
+	t_list		*lst_f;
 	t_lst_node	*new_node_f;
 
 	if (lst == NULL || f == NULL || del == NULL)
@@ -37,4 +37,3 @@ t_list	*lst_map(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	}
 	return (lst_f);
 }
-

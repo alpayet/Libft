@@ -6,17 +6,17 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 21:43:59 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/15 14:30:24 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 02:01:08 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-queue *queue_create(size_t capacity, size_t element_size)
+t_queue	*queue_create(size_t capacity, size_t element_size)
 {
-	queue	*q;
+	t_queue	*q;
 
-	q = malloc(sizeof(queue));
+	q = malloc(sizeof(t_queue));
 	if (q == NULL)
 		return (NULL);
 	q->capacity = capacity;

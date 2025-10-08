@@ -6,46 +6,48 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 01:01:08 by alpayet           #+#    #+#             */
-/*   Updated: 2025/08/24 22:37:53 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 02:31:48 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
-size_t hash(void *key);
-t_hashtbl_status hashtbl_bucket_prepend(vector *vect, t_list *bucket,
-	void *key, void *value);
-void bucket_clear(void *bucket);
 
-static bool	insert_in_new_vect(vector *new_vector, entry *node_entry)
+size_t				hash(void *key);
+t_hashtbl_status	hashtbl_bucket_prepend(t_vector *vect, t_list *bucket,
+						void *key, void *value);
+void				bucket_clear(void *bucket);
+
+static bool	insert_in_new_vect(t_vector *new_vector, t_entry *node_entry)
 {
 	size_t	new_index;
 	t_list	*new_bucket;
 
 	new_index = hash(node_entry->key) % new_vector->capacity;
 	new_bucket = *(t_list **)vector_get(new_vector, new_index);
-	if (hashtbl_bucket_prepend(new_vector, new_bucket,
-		node_entry->key, node_entry->value) == HASHTBL_ERR_ALLOC)
+	if (hashtbl_bucket_prepend(new_vector, new_bucket, node_entry->key,
+			node_entry->value) == HASHTBL_ERR_ALLOC)
 		return (false);
 	return (true);
 }
 
-static bool	reinsert_hashtbl_elements(vector *old_vector, vector *new_vector)
+static bool	reinsert_hashtbl_elements(t_vector *old_vector,
+		t_vector *new_vector)
 {
-	t_list	*old_bucket;
+	t_list		*old_bucket;
 	t_lst_node	*node;
-	entry	*node_entry;
-	size_t	i;
+	t_entry		*node_entry;
+	size_t		i;
 
 	i = 0;
 	while (i < old_vector->capacity)
 	{
-		old_bucket = *(t_list **)vector_get(old_vector, i);
+		old_bucket = *(t_list **)vector_get(old_vector, i++);
 		if (old_bucket != NULL)
 		{
 			node = old_bucket->first;
 			while (node != NULL)
 			{
-				node_entry = (entry *)(node->content);
+				node_entry = (t_entry *)(node->content);
 				if (node_entry != NULL)
 				{
 					if (insert_in_new_vect(new_vector, node_entry) == false)
@@ -54,12 +56,11 @@ static bool	reinsert_hashtbl_elements(vector *old_vector, vector *new_vector)
 				node = lst_node_next(node);
 			}
 		}
-		i++;
 	}
 	return (true);
 }
 
-static size_t hashtbl_capacity(hashtbl *h)
+static size_t	hashtbl_capacity(t_hashtbl *h)
 {
 	if (h->vect->capacity == 0)
 		return (INITIAL_BUCKET_COUNT);
@@ -67,15 +68,13 @@ static size_t hashtbl_capacity(hashtbl *h)
 		return (h->vect->capacity);
 }
 
-bool	hashtbl_resize(hashtbl *h)
+bool	hashtbl_resize(t_hashtbl *h)
 {
-	float	load_factor;
-	size_t	new_capacity;
-	vector	*old_vector;
-	vector	*new_vector;
+	float		load_factor;
+	size_t		new_capacity;
+	t_vector	*old_vector;
+	t_vector	*new_vector;
 
-	if (h == NULL || h->vect == NULL)
-		return (true);
 	new_capacity = hashtbl_capacity(h);
 	load_factor = (float)h->count / (float)new_capacity;
 	if (load_factor > HASHTBL_LOAD_FACTOR_LIMIT)

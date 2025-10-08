@@ -6,13 +6,13 @@
 /*   By: alpayet <alpayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 22:13:43 by alpayet           #+#    #+#             */
-/*   Updated: 2025/06/16 00:10:45 by alpayet          ###   ########.fr       */
+/*   Updated: 2025/10/08 01:58:53 by alpayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structures.h"
 
-bool queue_is_empty(queue *q)
+bool	queue_is_empty(t_queue *q)
 {
 	return (q == NULL || q->size == 0);
 }
